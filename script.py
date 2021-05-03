@@ -1,6 +1,8 @@
 from manticore.ethereum import ManticoreEVM
 from dump import get_evm_state
+import logging
 
+logger = logging.getLogger(__name__)
 
 m = ManticoreEVM()
 m.multi_tx_analysis('contract.sol')
@@ -8,11 +10,16 @@ states = list(m.all_states)
 
 conc_values = {}
 for state in states:
+    from io import StringIO
     conc_values[state] = []
     blockchain = state.platform
+    m.fix_unsound_symbolication(state)
+    state.platform.dump(StringIO(), state, m, '')
     human_transactions = list(blockchain.human_transactions)
-    for transaction in human_transactions:
-        conc_values[state].append(transaction.concretize(state))
+    for sym_tx in human_transactions:
+        conc_tx = sym_tx.concretize(state)
+        sym_tx.dump(StringIO(), state, m, conc_tx=conc_tx)
+        conc_values[state].append(conc_tx)
 
 
 def run_test_cases(contract_code, conc_txs):
@@ -29,7 +36,7 @@ def run_test_cases(contract_code, conc_txs):
             gas=230000,
         )
     except Exception as e:
-        print('raise exception in CREATE')
+        logger.exception('raise exception in CREATE')
 
     for conc_tx in conc_txs[1:]:
         try:
@@ -41,7 +48,7 @@ def run_test_cases(contract_code, conc_txs):
                 gas=230000
             )
         except Exception as e:
-            print('raise exception')
+            logger.exception('raise exception')
 
     return m2
 
@@ -51,6 +58,7 @@ def dump_output(mevm):
     state = list(mevm.all_states)[0]
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")
+    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
     blockchain = state.platform
     evm_stream = StringIO()
     blockchain.dump(evm_stream, state, mevm, '')
@@ -65,6 +73,9 @@ def dump_output(mevm):
 for state in states:
     print('-----------------------------')
     print(state)
+    # different in transaction results between expected_output and state is because of NoAliveStates
+    # results: REVERT (not possible transaction so reverted), RETURN (Okey), THROW (Exception),
+    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
     mevm = run_test_cases('contract.sol', conc_values[state])
     expected_output = get_evm_state(mevm)
 
