@@ -1,4 +1,7 @@
 from manticore.ethereum import ManticoreEVM
+from dump import get_evm_state
+
+
 m = ManticoreEVM()
 m.multi_tx_analysis('contract.sol')
 states = list(m.all_states)
@@ -46,18 +49,24 @@ def run_test_cases(contract_code, conc_txs):
 def dump_output(mevm):
     from io import StringIO
     state = list(mevm.all_states)[0]
-    mevm.fix_unsound_symbolication(state)
+    if not mevm.fix_unsound_symbolication(state):
+        print("Not sound")
     blockchain = state.platform
+    evm_stream = StringIO()
+    blockchain.dump(evm_stream, state, mevm, '')
     stream = StringIO()
-    stream.write(str([tx.concretize(state).to_dict(mevm) for tx in blockchain.transactions[1:]])) # first transaction is create and differ in code
-    return stream.getvalue()
+    for sym_tx in blockchain.human_transactions:
+        conc_tx = sym_tx.concretize(state)
+        sym_tx.dump(stream, state, mevm, conc_tx=conc_tx)
+    tx_output = [tx.concretize(state).to_dict(mevm) for tx in blockchain.transactions[1:]]
+    return stream.getvalue(), evm_stream.getvalue()
 
 
 for state in states:
     print('-----------------------------')
     print(state)
     mevm = run_test_cases('contract.sol', conc_values[state])
-    expected_output = dump_output(mevm)
+    expected_output = get_evm_state(mevm)
 
     for mutate in ['mutate.sol']:
         try:
@@ -65,13 +74,17 @@ for state in states:
         except:
             pass
 
-        output = dump_output(mevm)
+        output = get_evm_state(mevm)
 
         if output != expected_output:
             print(output)
             print()
             print(expected_output)
 
-# مشکل اینه که دیتا ها یکی نیستن. در واقع هر بار که تابع concretize صدا زده میشه به مقادیر سیمبولیک یه ولیو جدید اختصاص میده.
+# solving state instead of transactions
 
+# handle contract with constructor argument
 
+# for checking states:
+#   1. try use blockchain hash
+#   2. maybe because of the different between contract code we can't use blockchain hash at all. so we should write a custome code

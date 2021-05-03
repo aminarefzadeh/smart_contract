@@ -1,11 +1,8 @@
 pragma solidity ^0.4.25;
 contract Overflow {
-    uint private sellerBalance=0;
+    uint private sellerBalance=10;
     
-    function add(uint value) public returns (bool, uint){
-        sellerBalance += value; // complicated math with possible overflow
-
-        // possible auditor assert
-        assert(sellerBalance >= value); 
+    function check(uint value) public{
+        assert(sellerBalance == value);
     }
 }
