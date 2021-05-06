@@ -1,6 +1,6 @@
 from manticore.ethereum import ManticoreEVM
 from dump import get_evm_state
-from utils import solidity_create_contract_with_zero_price
+from utils import solidity_create_contract_with_zero_price, get_argument_from_create_transaction
 import logging
 
 logger = logging.getLogger(__name__)
@@ -29,13 +29,14 @@ def run_test_cases(contract_code, conc_txs):
     attacker_account = m2.create_account(balance=10 ** 10, name="attacker",
                                          address=m.accounts.get('attacker').address)
     try:
+        call_args = get_argument_from_create_transaction(m, conc_txs[0])
         create_value = m2.make_symbolic_value()
         m2.constrain(create_value == conc_txs[0].value)
         contract_account = solidity_create_contract_with_zero_price(
             m2,
             contract_code,
             owner=owner_account,
-            args=None,
+            args=call_args,
             balance=create_value,
             gas=0,
         )
@@ -92,3 +93,4 @@ for state in states:
 #   becuase you set gas usage like 230000, but according to contract length create contract use different gas amount
 #   I correct this, using price=0 for transaction and price=0 in create_account
 #   3. don't count gas in word state (transaction without gas usage)
+#   4. contract with input argument

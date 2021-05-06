@@ -217,3 +217,14 @@ def solidity_create_contract_with_zero_price(
             return contract_account
 
     logger.info("Failed to compile contract %r", contract_names)
+
+
+def get_argument_from_create_transaction(mevm, conc_tx):
+    metadata = mevm.get_metadata(conc_tx.address)
+    if metadata is not None:
+        conc_args_data = conc_tx.data[len(metadata._init_bytecode):]
+        arguments = ABI.deserialize(metadata.get_constructor_arguments(), conc_args_data)
+        print(arguments)
+        # TODO confirm: arguments should all be concrete?
+        return arguments
+        # solved_values = map(state.solve_one, arguments)
