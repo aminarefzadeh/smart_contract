@@ -1,5 +1,6 @@
 from manticore.ethereum import ManticoreEVM
 from dump import get_evm_state
+from utils import solidity_create_contract_with_zero_price
 import logging
 
 logger = logging.getLogger(__name__)
@@ -28,15 +29,19 @@ def run_test_cases(contract_code, conc_txs):
     attacker_account = m2.create_account(balance=10 ** 10, name="attacker",
                                          address=m.accounts.get('attacker').address)
     try:
-        contract_account = m2.solidity_create_contract(
+        create_value = m2.make_symbolic_value()
+        m2.constrain(create_value == conc_txs[0].value)
+        contract_account = solidity_create_contract_with_zero_price(
+            m2,
             contract_code,
             owner=owner_account,
             args=None,
-            balance=conc_txs[0].value,
-            gas=230000,
+            balance=create_value,
+            gas=0,
         )
     except Exception as e:
         logger.error('raise exception in CREATE')
+        return m2
 
     for conc_tx in conc_txs[1:]:
         try:
@@ -45,30 +50,13 @@ def run_test_cases(contract_code, conc_txs):
                 address=contract_account,
                 value=conc_tx.value,
                 data=conc_tx.data,      # data has all needed metadata like function id ([:4]) and argument passed to function
-                gas=230000
+                gas=0,
+                price=0
             )
         except Exception as e:
             logger.exception('raise exception')
 
     return m2
-
-
-def dump_output(mevm):
-    from io import StringIO
-    logger.info(len(mevm.all_states))
-    state = list(mevm.all_states)[0]
-    if not mevm.fix_unsound_symbolication(state):
-        print("Not sound")
-    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
-    blockchain = state.platform
-    evm_stream = StringIO()
-    blockchain.dump(evm_stream, state, mevm, '')
-    stream = StringIO()
-    for sym_tx in blockchain.human_transactions:
-        conc_tx = sym_tx.concretize(state)
-        sym_tx.dump(stream, state, mevm, conc_tx=conc_tx)
-    tx_output = [tx.concretize(state).to_dict(mevm) for tx in blockchain.transactions[1:]]
-    return stream.getvalue(), evm_stream.getvalue()
 
 
 for state in states:
@@ -103,4 +91,7 @@ for state in states:
 
 # for checking states:
 #   1. last transaction status maybe different but world state is the same ??
-#   2. balance problem
+#   2. balance problem --> problem is solidity_create_contract>create_contract>_transaction>run
+#   becuase you set gas usage like 230000, but according to contract length create contract use different gas amount
+#   I correct this, using price=0 for transaction and price=0 in create_account
+#   3. don't count gas in word state (transaction without gas usage)

@@ -16,6 +16,7 @@ def get_evm_state(mevm):
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")
 
+    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
     blockchain = state.platform
     blockchain_state = BlockChianState()
 
