@@ -62,9 +62,6 @@ def run_test_cases(contract_code, conc_txs):
 for state in states:
     print('-----------------------------')
     print(state)
-    # different in transaction results between expected_output and state is because of NoAliveStates
-    # results: REVERT (not possible transaction so reverted), RETURN (Okey), THROW (Exception),
-    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
     mevm = run_test_cases('contract.sol', conc_values[state])
     expected_output = get_evm_state(mevm)
 

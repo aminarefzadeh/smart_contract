@@ -1,4 +1,4 @@
-from state import BlockChianState, AccountState
+from state import BlockChianState, AccountState, TransactionState
 from manticore.platforms.evm import consts
 from manticore.core.smtlib import SelectedSolver
 import logging
@@ -16,9 +16,9 @@ def get_evm_state(mevm):
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")
 
-    print(state.platform.last_transaction.result if state.platform.last_transaction else "NO STATE RESULT (?)")
+    transaction_state = TransactionState(len(state.platform.human_transactions), state.platform.last_transaction)
     blockchain = state.platform
-    blockchain_state = BlockChianState()
+    blockchain_state = BlockChianState(transaction_state)
 
     # Accounts summary
     assert state.can_be_true(True)
