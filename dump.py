@@ -1,9 +1,17 @@
 from state import BlockChianState, AccountState
 from manticore.platforms.evm import consts
 from manticore.core.smtlib import SelectedSolver
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def get_evm_state(mevm):
+    # print('busy: ', mevm.count_busy_states())
+    # print('killed: ', mevm.count_killed_states())
+    # print('ready: ', mevm.count_ready_states())
+    # print('terminated: ', mevm.count_terminated_states())
+    assert len(list(mevm.all_states)) == 1
     state = list(mevm.all_states)[0]
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")

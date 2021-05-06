@@ -36,7 +36,7 @@ def run_test_cases(contract_code, conc_txs):
             gas=230000,
         )
     except Exception as e:
-        logger.exception('raise exception in CREATE')
+        logger.error('raise exception in CREATE')
 
     for conc_tx in conc_txs[1:]:
         try:
@@ -55,6 +55,7 @@ def run_test_cases(contract_code, conc_txs):
 
 def dump_output(mevm):
     from io import StringIO
+    logger.info(len(mevm.all_states))
     state = list(mevm.all_states)[0]
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")
@@ -80,22 +81,26 @@ for state in states:
     expected_output = get_evm_state(mevm)
 
     for mutate in ['mutate.sol']:
-        try:
-            mevm = run_test_cases(mutate, conc_values[state])
-        except:
-            pass
-
-        output = get_evm_state(mevm)
+        mutate_mevm = run_test_cases(mutate, conc_values[state])
+        output = get_evm_state(mutate_mevm)
 
         if output != expected_output:
             print(output)
             print()
             print(expected_output)
 
+        # removing file and terminate
+        mutate_mevm.kill()
+        mutate_mevm.remove_all()
+
+    mevm.kill()
+    mevm.remove_all()
+
+
 # solving state instead of transactions
 
 # handle contract with constructor argument
 
 # for checking states:
-#   1. try use blockchain hash
-#   2. maybe because of the different between contract code we can't use blockchain hash at all. so we should write a custome code
+#   1. last transaction status maybe different but world state is the same ??
+#   2. balance problem
