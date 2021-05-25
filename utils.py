@@ -224,7 +224,6 @@ def get_argument_from_create_transaction(mevm, conc_tx):
     if metadata is not None:
         conc_args_data = conc_tx.data[len(metadata._init_bytecode):]
         arguments = ABI.deserialize(metadata.get_constructor_arguments(), conc_args_data)
-        print(arguments)
         # TODO confirm: arguments should all be concrete?
         return arguments
         # solved_values = map(state.solve_one, arguments)

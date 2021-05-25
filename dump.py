@@ -16,7 +16,11 @@ def get_evm_state(mevm):
     if not mevm.fix_unsound_symbolication(state):
         print("Not sound")
 
-    transaction_state = TransactionState(len(state.platform.human_transactions), state.platform.last_transaction)
+    transactions = list(state.platform.transactions)
+    # last_tx = state.platform.last_transaction
+    # if len(transactions) == 0 or transactions[-1] != last_tx:
+    #     transactions.append(last_tx)
+    transaction_state = TransactionState.create(transactions, state, mevm)
     blockchain = state.platform
     blockchain_state = BlockChianState(transaction_state)
 

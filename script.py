@@ -1,14 +1,21 @@
+import os
+
 from manticore.ethereum import ManticoreEVM
 from dump import get_evm_state
+from state import BlockChianState
 from utils import solidity_create_contract_with_zero_price, get_argument_from_create_transaction
 import logging
+import shutil
 
 logger = logging.getLogger(__name__)
 
+print('Start analysing contract ...')
 m = ManticoreEVM()
 m.multi_tx_analysis('contract.sol')
 states = list(m.all_states)
+print('Finish Analysing')
 
+print('Concretizing symbolic values ...')
 conc_values = {}
 for state in states:
     from io import StringIO
@@ -21,6 +28,7 @@ for state in states:
         conc_tx = sym_tx.concretize(state)
         sym_tx.dump(StringIO(), state, m, conc_tx=conc_tx)
         conc_values[state].append(conc_tx)
+print('Finish concretizing')
 
 
 def run_test_cases(contract_code, conc_txs):
@@ -60,27 +68,69 @@ def run_test_cases(contract_code, conc_txs):
     return m2
 
 
+def save_state_status(state_id, killed_mutant, not_killed_mutant, blockchain_state):
+    f = open(f'result/state_{state_id}/summary.txt', 'w')
+    f.write(str(blockchain_state))
+    f.write('\n')
+    f.write('Killed mutant:\n')
+    for mutant in killed_mutant:
+        f.write(f'{mutant}\n')
+    f.write('\nNot killed mutant:\n')
+    for mutant in not_killed_mutant:
+        f.write(f'{mutant}\n')
+
+    f.write(f'\nScore: {len(killed_mutant)/(len(killed_mutant)+len(not_killed_mutant))*100}%\n')
+    f.close()
+
+
+def save_mutant_diff(state_id, mutant_name, contract_state, mutant_state):
+    f = open(f'result/state_{state_id}/{mutant_name}', 'w')
+    BlockChianState.print_diff(contract_state, mutant_state, f)
+    f.close()
+
+
+def clean_dir():
+    mcore_dirs = [item for item in os.listdir('.') if item.startswith('mcore')]
+    for mcore_dir in mcore_dirs:
+        shutil.rmtree(mcore_dir)
+
+
+if os.path.isdir('result'):
+    shutil.rmtree('result')
+
+os.mkdir('result')
+print(f'Start processing {len(states)} paths ...')
+state_id = 1
 for state in states:
-    print('-----------------------------')
-    print(state)
+    print(f'Start processing path {state_id}')
+    os.mkdir(f'result/state_{state_id}')
     mevm = run_test_cases('contract.sol', conc_values[state])
     expected_output = get_evm_state(mevm)
-
-    for mutate in ['mutate.sol']:
-        mutate_mevm = run_test_cases(mutate, conc_values[state])
-        output = get_evm_state(mutate_mevm)
+    killed_mutant = []
+    not_killed_mutant = []
+    for mutant in ['mutant.sol']:
+        print(f'Run test case on {mutant}')
+        mutant_mevm = run_test_cases(mutant, conc_values[state])
+        output = get_evm_state(mutant_mevm)
 
         if output != expected_output:
-            print(output)
-            print()
-            print(expected_output)
+            killed_mutant.append(mutant)
 
-        # removing file and terminate
-        mutate_mevm.kill()
-        mutate_mevm.remove_all()
+        else:
+            not_killed_mutant.append(mutant)
 
+        save_mutant_diff(state_id, mutant, expected_output, output)
+        # terminate
+        mutant_mevm.kill()
+        mutant_mevm.remove_all()
+        print(f'Finish running test case on {mutant}')
+
+    save_state_status(state_id, killed_mutant, not_killed_mutant, expected_output)
     mevm.kill()
     mevm.remove_all()
+    print(f'Finish processing path {state_id}')
+    state_id += 1
+clean_dir()
 
 
 # solving state instead of transactions
