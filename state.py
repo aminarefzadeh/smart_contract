@@ -5,6 +5,16 @@ from manticore.ethereum import ABI
 
 
 class AccountState:
+    """
+        Saving accounts state of EVM
+        Accounts consist of address, name, balance and storage(for contracts)
+
+        Methods:
+            __eq__(self, other) --> checks the equality of accounts state in two different evm (main contract and mutate)
+            __str__(self) --> human readable accounts state
+            print_diff(contract_account, mutant_account, stream) --> print human readable difference between two accounts state
+    """
+
     def __init__(self, address, balance, storage, name):
         self.address = address
         self.balance = balance
@@ -29,6 +39,19 @@ class AccountState:
 
 
 class TransactionState:
+    """
+        Saving transactions state of EVM
+        Transactions are function calls
+        Transactions state consist of type, from_address, from_name, to_address, to_name, value, gas, data,
+                                        used_gas, result, depth and return_data
+
+        Methods:
+            __eq__(self, other) --> checks the equality of transactions state in two different evm (main contract and mutate)
+            __str__(self) --> human readable transactions state
+            print_diff(contract_account, mutant_account, stream) --> print human readable difference between two transactions state
+            create(transactions, state, mevm): --> creates a transactions state with provided argument
+    """
+
     def __init__(self, result, all_tx_summary):
         self.result = result
         self.all_tx_summary = all_tx_summary
@@ -115,7 +138,18 @@ class TransactionState:
         return TransactionState(transactions_result, transactions_human_readable)
 
 
-class BlockChianState:
+class BlockChainState:
+    """
+        Saving blockchain state of EVM
+        Blockchain state consist of transactions state and accounts state
+
+        Methods:
+            create_from_evm(mevm): --> create a blockchain state from mevm
+            __eq__(self, other) --> checks the equality of blockchain state in two different evm (main contract and mutate)
+            __str__(self) --> human readable blackchain state
+            print_diff(contract_account, mutant_account, stream) --> print human readable difference between two blockchain state
+    """
+
     def __init__(self, transaction_state):
         self.accounts = {}
         self.transaction_state = transaction_state
@@ -145,10 +179,60 @@ class BlockChianState:
                 TransactionState.print_diff(contract_state.transaction_state, mutant_state.transaction_state, stream)
             if contract_state.accounts != mutant_state.accounts:
                 stream.write('\n')
-                BlockChianState.print_accounts_diff(contract_state.accounts, mutant_state.accounts, stream)
+                BlockChainState.print_accounts_diff(contract_state.accounts, mutant_state.accounts, stream)
         else:
             stream.write('Status: passed\n')
 
+    @staticmethod
+    def create_from_evm(mevm):
+        from state import BlockChainState, AccountState, TransactionState
+        from manticore.platforms.evm import consts
+        from manticore.core.smtlib import SelectedSolver
+        assert len(list(mevm.all_states)) == 1
+        state = list(mevm.all_states)[0]
+        if not mevm.fix_unsound_symbolication(state):
+            print("Not sound")
+
+        transactions = list(state.platform.transactions)
+        transaction_state = TransactionState.create(transactions, state, mevm)
+        blockchain = state.platform
+        blockchain_state = BlockChainState(transaction_state)
+
+        assert state.can_be_true(True)
+        for account_address in blockchain.accounts:
+            account_address = state.solve_one(account_address, constrain=True)
+
+            balance = blockchain.get_balance(account_address)
+            if not consts.ignore_balance:
+                balance = state.solve_one(balance, constrain=True)
+
+            storage = blockchain.get_storage(account_address)
+            ss = {}
+            concrete_indexes = set()
+            for sindex in storage.written:
+                concrete_indexes.add(state.solve_one(sindex, constrain=True))
+
+            for index in concrete_indexes:
+                ss[index] = state.solve_one(storage[index], constrain=True)
+
+            storage = blockchain.get_storage(account_address)
+
+            if consts.sha3 is consts.sha3.concretize:
+                all_used_indexes = []
+                with state.constraints as temp_cs:
+                    index = temp_cs.new_bitvec(256)
+                    storage = blockchain.get_storage(account_address)
+                    temp_cs.add(storage.is_known(index))
+                    all_used_indexes = SelectedSolver.instance().get_all_values(temp_cs, index)
+
+                if all_used_indexes:
+                    for i in all_used_indexes:
+                        value = storage.get(i)
+                        ss[state.solve_one(i, constrain=True)] = state.solve_one(value, constrain=True)
+
+            blockchain_state.add_account(
+                AccountState(account_address, balance, ss, mevm.account_name(account_address)))
+        return blockchain_state
 
     @staticmethod
     def print_accounts_diff(contract_accounts, mutant_accounts, stream):
@@ -161,17 +245,15 @@ class BlockChianState:
 def make_transaction_human_readable(conc_tx, mevm, state, stream):
     metadata = mevm.get_metadata(conc_tx.address)
     if conc_tx.sort == "CREATE":
+        stream.write("Constructor(")
         if metadata is not None:
             conc_args_data = conc_tx.data[len(metadata._init_bytecode):]
             arguments = ABI.deserialize(metadata.get_constructor_arguments(), conc_args_data)
-
-            # TODO confirm: arguments should all be concrete?
-
-            stream.write("Constructor(")
             stream.write(
                 ",".join(map(repr, map(state.solve_one, arguments)))
             )  # is this redundant since arguments are all concrete?
-            stream.write(") -> %s \n" % (conc_tx.result))
+
+        stream.write(") with initial balance %s -> %s \n" % (conc_tx.value, conc_tx.result))
 
     if conc_tx.sort == "CALL":
         if metadata is not None:

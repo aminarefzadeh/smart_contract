@@ -1,48 +1,18 @@
-import binascii
-import json
-import logging
-from multiprocessing import Queue, Process
-from queue import Empty as EmptyQueue
-from typing import Dict, Optional, Union
-import io
-import pyevmasm as EVMAsm
-import random
-import tempfile
-import time
-
-from crytic_compile import CryticCompile, InvalidCompilation, is_supported
-
-from manticore.core.manticore import ManticoreBase, ManticoreError
-
 from manticore.core.smtlib import (
-    ConstraintSet,
-    Array,
-    ArrayProxy,
-    BitVec,
     Operators,
-    BoolConstant,
-    Expression,
-    issymbolic,
     SelectedSolver,
 )
-from manticore.core.state import AbandonState
 from manticore.ethereum.account import EVMContract, EVMAccount, ABI
-from manticore.ethereum.detectors import Detector
 from manticore.ethereum.solidity import SolidityMetadata
-from manticore.ethereum.state import State
 from manticore.exceptions import EthereumError, DependencyError, NoAliveStates
 from manticore.platforms import evm
-from manticore.utils import config
-from manticore.utils.deprecated import deprecated
-from manticore.utils.enums import Sha3Type
-from manticore.utils.helpers import PickleSerializer, printable_bytes
 import logging
 
 logger = logging.getLogger(__name__)
 
 
 def create_contract(self, owner, balance=0, address=None, init=None, name=None, gas=None):
-    """ Creates a contract
+    """ Creates a contract with zero price (no gas will use)
 
         :param owner: owner account (will be default caller in any transactions)
         :type owner: int or EVMAccount
@@ -67,15 +37,13 @@ def create_contract(self, owner, balance=0, address=None, init=None, name=None, 
             "Address was expected to be %x but was given %x" % (expected_address, address)
         )
 
-    # Name check
     if name is None:
         name = self._get_uniq_name("contract")
     if name in self._accounts:
-        # Account name already used
         raise EthereumError("Name already used")
 
+    # setting price to zero when calling transaction
     self._transaction("CREATE", owner, balance, address, data=init, gas=gas, price=0)
-    # TODO detect failure in the constructor
     if self.count_ready_states():
         self._accounts[name] = EVMContract(
             address=address, manticore=self, default_caller=owner, name=name
@@ -96,7 +64,7 @@ def solidity_create_contract_with_zero_price(
     gas=None,
     compile_args=None,
 ):
-    """ Creates a solidity contract and library dependencies
+    """ Overwriting creates_solidity_contract function with zero price (no gas used when creating contract)
 
         :param source_code: solidity source code
         :type source_code: string (filename, directory, etherscan address) or a file handle
@@ -224,6 +192,4 @@ def get_argument_from_create_transaction(mevm, conc_tx):
     if metadata is not None:
         conc_args_data = conc_tx.data[len(metadata._init_bytecode):]
         arguments = ABI.deserialize(metadata.get_constructor_arguments(), conc_args_data)
-        # TODO confirm: arguments should all be concrete?
         return arguments
-        # solved_values = map(state.solve_one, arguments)
