@@ -3,6 +3,8 @@ import binascii
 
 from manticore.ethereum import ABI
 
+from utils import get_argument_from_create_transaction
+
 
 class AccountState:
     """
@@ -188,7 +190,10 @@ class BlockChainState:
         from state import BlockChainState, AccountState, TransactionState
         from manticore.platforms.evm import consts
         from manticore.core.smtlib import SelectedSolver
-        assert len(list(mevm.all_states)) == 1
+        if len(list(mevm.all_states)) == 0:
+            empty_transaction_state = TransactionState(result=[], all_tx_summary='')
+            return BlockChainState(empty_transaction_state)
+
         state = list(mevm.all_states)[0]
         if not mevm.fix_unsound_symbolication(state):
             print("Not sound")
@@ -252,7 +257,6 @@ def make_transaction_human_readable(conc_tx, mevm, state, stream):
             stream.write(
                 ",".join(map(repr, map(state.solve_one, arguments)))
             )  # is this redundant since arguments are all concrete?
-
         stream.write(") with initial balance %s -> %s \n" % (conc_tx.value, conc_tx.result))
 
     if conc_tx.sort == "CALL":
@@ -268,6 +272,7 @@ def make_transaction_human_readable(conc_tx, mevm, state, stream):
                 arguments = (calldata,)
 
             return_data = None
+            return_values = None
             if conc_tx.result == "RETURN":
                 ret_types = metadata.get_func_return_types(function_id)
                 return_data = conc_tx.return_data
@@ -280,5 +285,4 @@ def make_transaction_human_readable(conc_tx, mevm, state, stream):
             if return_data is not None:
                 if len(return_values) == 1:
                     return_values = return_values[0]
-
-                stream.write("return: %r %s\n" % (return_values))
+                stream.write(f"return: {return_values}\n")

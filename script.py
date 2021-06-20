@@ -69,6 +69,7 @@ class Analyzer:
             mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case)
 
             if mutant_blockchain_state != main_blockchain_state:
+                print(f'Killed: {mutant_name}')
                 self._killed_mutants.append(mutant_name)
                 is_selected = True
 
@@ -107,6 +108,10 @@ class Analyzer:
             f.write(str(test_case.transaction_state))
             f.write('\n')
             i+=1
+
+        print('')
+        print(f'Number of mutants: {len(self._all_mutants)}')
+        print(f'Number of killed mutants: {len(self._killed_mutants)}')
 
     def _run_test_case_on_contract(self, contract_code, conc_txs):
         m2 = ManticoreEVM()
