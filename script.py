@@ -28,7 +28,7 @@ class Analyzer:
 
     def _find_test_cases(self):
         print('Finding test cases ...')
-        self._main_evm = ManticoreEVM()
+        self._main_evm = ManticoreEVM(workspace_url=os.path.join(os.getcwd(), 'manticore_results'))
         self._main_evm.multi_tx_analysis(f'{self._input_folder}/contract.sol')
         self._test_cases = list(self._main_evm.all_states)
 
@@ -83,14 +83,17 @@ class Analyzer:
         print(f'Start processing {len(self._test_cases)} test cases ...')
         for test_case_number in range(len(self._test_cases)):
             self._run_single_test_case(test_case_number)
-        clean_dir()
 
     def run(self):
-        self._find_mutants()
-        self._find_test_cases()
-        self._concretizing_transactions()
-        self._run_test_cases()
-        self._print_result()
+        try:
+            self._find_mutants()
+            self._find_test_cases()
+            self._concretizing_transactions()
+            self._run_test_cases()
+            self._print_result()
+            self._main_evm.finalize()
+        finally:
+            clean_dir()
 
     def _print_result(self):
         print('Write result in result.txt')

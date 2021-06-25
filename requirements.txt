@@ -1,0 +1,17 @@
+crytic-compile==0.1.13
+cytoolz==0.11.0
+eth-hash==0.3.1
+eth-typing==2.2.2
+eth-utils==1.10.0
+future==0.18.2
+ply==3.11
+prettytable==2.1.0
+pyevmasm==0.2.3
+pysha3==1.0.2
+PyYAML==5.4.1
+rlp==2.0.1
+toolz==0.11.1
+wasm==1.2
+wcwidth==0.2.5
+z3-solver==4.8.10.0
+manticore==0.3.5

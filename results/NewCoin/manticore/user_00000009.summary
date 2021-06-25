@@ -1,0 +1,26 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract 73d2aa6a7b02701bda64ecdeeed15ef04af1b88c offset f
+    16  constructor() {
+        17          minter = msg.sender;
+        18      }
+
+3 accounts.
+* owner::
+Address: 0x475c7eb24f3c410df7fa34e2b9478a188ab41af5 
+Balance: 9999942335 (*)
+Storage: STORAGE_475c7eb24f3c410df7fa34e2b9478a188ab41af5
+
+* attacker::
+Address: 0x7004e4a2fc46e2dcba468907d853c169e43d17a3 
+Balance: 10000000000 
+Storage: STORAGE_7004e4a2fc46e2dcba468907d853c169e43d17a3
+
+* contract0::
+Address: 0x73d2aa6a7b02701bda64ecdeeed15ef04af1b88c 
+Balance: 0 (*)
+Storage: STORAGE_73d2aa6a7b02701bda64ecdeeed15ef04af1b88c
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

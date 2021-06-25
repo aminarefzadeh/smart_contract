@@ -1,0 +1,26 @@
+Finding test cases ...
+Concretizing symbolic values ...
+Start processing 11 test cases ...
+Start processing test case 1
+Run test case on contract.mutant.2.sol
+Killed: contract.mutant.2.sol
+Run test case on contract.mutant.1.sol
+Killed: contract.mutant.1.sol
+Run test case on contract.mutant.0.sol
+Killed: contract.mutant.0.sol
+Run test case on contract.mutant.3.sol
+Killed: contract.mutant.3.sol
+Start processing test case 2
+Start processing test case 3
+Start processing test case 4
+Start processing test case 5
+Start processing test case 6
+Start processing test case 7
+Start processing test case 8
+Start processing test case 9
+Start processing test case 10
+Start processing test case 11
+Write result in result.txt
+
+Number of mutants: 4
+Number of killed mutants: 4

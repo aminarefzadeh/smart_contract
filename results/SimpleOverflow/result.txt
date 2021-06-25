@@ -1,0 +1,21 @@
+Not killed mutants:
+
+contract.mutant.2.sol
+contract.mutant.16.sol
+contract.mutant.3.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+add(3131953972680206597016670068900048673756965549644357784430672951686) -> RETURN
+return: (0, 0)
+
+add(115792089225732183069875818124823663228524873751654945468377762141581703848617) -> RETURN
+return: (0, 0)
+
+add(0) -> RETURN
+return: (0, 0)
+

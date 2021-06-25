@@ -1,0 +1,44 @@
+Not killed mutants:
+
+contract.mutant.18.sol
+contract.mutant.23.sol
+contract.mutant.10.sol
+contract.mutant.26.sol
+contract.mutant.22.sol
+contract.mutant.31.sol
+contract.mutant.14.sol
+contract.mutant.46.sol
+contract.mutant.25.sol
+contract.mutant.45.sol
+contract.mutant.8.sol
+contract.mutant.21.sol
+contract.mutant.80.sol
+contract.mutant.9.sol
+contract.mutant.42.sol
+contract.mutant.15.sol
+contract.mutant.20.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+test_me(0,4,0) -> STOP
+
+test_me(1095216660480,4,1816346497840254045859937019744124044757176230049263749638550337379029484548) -> STOP
+
+------------------------- Test case 2 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+test_me(0,5,2270433122300317557324921274680155055946470287561579687048187921723786855685) -> STOP
+
+test_me(0,4,0) -> STOP
+
+------------------------- Test case 3 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+test_me(0,4,24424147682550103680086155745208052613923654759801159680) -> REVERT
+

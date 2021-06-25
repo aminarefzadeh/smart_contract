@@ -1,0 +1,75 @@
+Finding test cases ...
+Concretizing symbolic values ...
+Start processing 10 test cases ...
+Start processing test case 1
+Run test case on contract.mutant.3.sol
+Run test case on contract.mutant.4.sol
+Killed: contract.mutant.4.sol
+Run test case on contract.mutant.6.sol
+Killed: contract.mutant.6.sol
+Run test case on contract.mutant.15.sol
+Killed: contract.mutant.15.sol
+Run test case on contract.mutant.13.sol
+Killed: contract.mutant.13.sol
+Run test case on contract.mutant.7.sol
+Killed: contract.mutant.7.sol
+Run test case on contract.mutant.12.sol
+Killed: contract.mutant.12.sol
+Run test case on contract.mutant.0.sol
+Killed: contract.mutant.0.sol
+Run test case on contract.mutant.1.sol
+Killed: contract.mutant.1.sol
+Run test case on contract.mutant.14.sol
+Killed: contract.mutant.14.sol
+Run test case on contract.mutant.9.sol
+Killed: contract.mutant.9.sol
+Run test case on contract.mutant.10.sol
+Killed: contract.mutant.10.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.8.sol
+Killed: contract.mutant.8.sol
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.11.sol
+Killed: contract.mutant.11.sol
+Run test case on contract.mutant.5.sol
+Killed: contract.mutant.5.sol
+Start processing test case 2
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 3
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 4
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 5
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 6
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 7
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 8
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 9
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Start processing test case 10
+Run test case on contract.mutant.2.sol
+Run test case on contract.mutant.16.sol
+Run test case on contract.mutant.3.sol
+Write result in result.txt
+
+Number of mutants: 17
+Number of killed mutants: 14

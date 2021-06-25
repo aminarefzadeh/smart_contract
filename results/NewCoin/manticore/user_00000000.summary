@@ -1,0 +1,23 @@
+Message: STOP
+Last exception: STOP
+Last instruction at contract 73d2aa6a7b02701bda64ecdeeed15ef04af1b88c offset d6
+    30  function send(address receiver, uint amount) public {
+        31          require(amount <= balances[msg.sender], "Insufficient balance.");
+        32          balances[msg.sender] -= amount;
+        33          balances[receiver] += amount;
+        34          emit Sent(msg.sender, receiver, amount);
+        35      }
+
+3 accounts.
+* owner::
+Address: 0x475c7eb24f3c410df7fa34e2b9478a188ab41af5 
+Balance: 9999921152 (*)
+Storage: STORAGE_475c7eb24f3c410df7fa34e2b9478a188ab41af5
+
+* attacker::
+Address: 0x7004e4a2fc46e2dcba468907d853c169e43d17a3 
+Balance: 9999940624 (*)
+Storage: STORAGE_7004e4a2fc46e2dcba468907d853c169e43d17a3
+
+* contract0::
+Address: 0x73d2aa6a7b02701bda64ecdeeed15ef04af1b88c 
