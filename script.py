@@ -20,11 +20,9 @@ class Analyzer:
         self._input_folder = input_folder
         self._main_evm = None
         self._test_cases = []
-        # concretized trasactions per test case
-        self._conc_txs = {}
         self._killed_mutants = []
         self._all_mutants = []
-        self._selected_test_case = []
+        self._all_test_cases = []
 
     def _find_test_cases(self):
         print('Finding test cases ...')
@@ -32,23 +30,23 @@ class Analyzer:
         self._main_evm.multi_tx_analysis(f'{self._input_folder}/contract.sol')
         self._test_cases = list(self._main_evm.all_states)
 
-    def _concretizing_transactions(self):
+    def _concretizing_transactions(self, test_case):
         print('Concretizing symbolic values ...')
-        for test_case in self._test_cases:
-            self._conc_txs[test_case] = []
-            blockchain = test_case.platform
-            self._main_evm.fix_unsound_symbolication(test_case)
-            human_transactions = list(blockchain.human_transactions)
-            for sym_tx in human_transactions:
-                conc_tx = sym_tx.concretize(test_case)
-                self._conc_txs[test_case].append(conc_tx)
+        conc_txs = []
+        blockchain = test_case.platform
+        self._main_evm.fix_unsound_symbolication(test_case)
+        human_transactions = list(blockchain.human_transactions)
+        for sym_tx in human_transactions:
+            conc_tx = sym_tx.concretize(test_case)
+            conc_txs.append(conc_tx)
+        return conc_txs
 
     def _find_mutants(self):
         self._all_mutants = os.listdir(f'{self._input_folder}/mutants')
 
-    def _run_test_case_on_mutant(self, mutant_name, test_case):
+    def _run_test_case_on_mutant(self, mutant_name, test_case, conc_txs):
         print(f'Run test case on {mutant_name}')
-        mutant_mevm = self._run_test_case_on_contract(f'{self._input_folder}/mutants/{mutant_name}', self._conc_txs[test_case])
+        mutant_mevm = self._run_test_case_on_contract(f'{self._input_folder}/mutants/{mutant_name}', conc_txs)
         mutant_blockchain_state = BlockChainState.create_from_evm(mutant_mevm)
         # terminate
         mutant_mevm.kill()
@@ -59,14 +57,15 @@ class Analyzer:
         test_case = self._test_cases[test_case_number]
         print(f'Start processing test case {test_case_number + 1}')
         not_killed_mutants = list(set(self._all_mutants) - set(self._killed_mutants))
-        if not len(not_killed_mutants):
-            return
 
-        mevm = self._run_test_case_on_contract(f'{self._input_folder}/contract.sol', self._conc_txs[test_case])
+        conc_txs = self._concretizing_transactions(test_case)
+        mevm = self._run_test_case_on_contract(f'{self._input_folder}/contract.sol', conc_txs)
         main_blockchain_state = BlockChainState.create_from_evm(mevm)
+        self._all_test_cases.append((main_blockchain_state, False))
+
         is_selected = False
         for mutant_name in not_killed_mutants:
-            mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case)
+            mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case, conc_txs)
 
             if mutant_blockchain_state != main_blockchain_state:
                 print(f'Killed: {mutant_name}')
@@ -74,7 +73,7 @@ class Analyzer:
                 is_selected = True
 
         if is_selected:
-            self._selected_test_case.append(main_blockchain_state)
+            self._all_test_cases[-1] = (main_blockchain_state, True)
 
         mevm.kill()
         mevm.remove_all()
@@ -82,13 +81,15 @@ class Analyzer:
     def _run_test_cases(self):
         print(f'Start processing {len(self._test_cases)} test cases ...')
         for test_case_number in range(len(self._test_cases)):
-            self._run_single_test_case(test_case_number)
+            try:
+                self._run_single_test_case(test_case_number)
+            except:
+                print('exception on running test case. continuing ...')
 
     def run(self):
         try:
             self._find_mutants()
             self._find_test_cases()
-            self._concretizing_transactions()
             self._run_test_cases()
             self._print_result()
             self._main_evm.finalize()
@@ -105,12 +106,25 @@ class Analyzer:
 
         f.write('\n')
         f.write('Selected test cases\n\n')
-        i = 1
-        for test_case in self._selected_test_case:
-            f.write(f'------------------------- Test case {i} -------------------------\n\n')
-            f.write(str(test_case.transaction_state))
-            f.write('\n')
-            i+=1
+
+        f2 = open('test_cases.txt', 'w')
+        f2.write('All test cases:\n\n')
+
+        for i in range(len(self._all_test_cases)):
+            test_case, is_selected = self._all_test_cases[i]
+            f2.write(f'------------------------- Test case {i+1} -------------------------\n\n')
+
+            if is_selected:
+                f2.write(f'* SELECTED\n\n')
+                f.write(f'------------------------- Test case {i+1} -------------------------\n\n')
+                f.write(str(test_case.transaction_state))
+                f.write('\n\n')
+
+            f2.write(str(test_case.transaction_state))
+            f2.write('\n\n')
+
+        f.close()
+        f2.close()
 
         print('')
         print(f'Number of mutants: {len(self._all_mutants)}')
