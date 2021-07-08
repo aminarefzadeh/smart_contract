@@ -1,32 +1,23 @@
 Message: REVERT
 Last exception: REVERT
-Last instruction at contract e34e4519ab09191775b6d440c04b268984cf1dc0 offset 13
-    1  contract Overflow {
-        2      uint private sellerBalance=0;
-        3  
-        4      function add(uint value) public returns (bool, uint){
-        5          sellerBalance += value; // complicated math with possible overflow
-        6  
-        7          // possible auditor assert
-        8          assert(sellerBalance >= value);
-        9      }
-        10  }
+Last instruction at contract cc374d004671038369ad0df6ec24e750cdc3598c offset 13
+    2      uint pri
 
 3 accounts.
 * owner::
-Address: 0x880a7e86e1e16109f2fcefab242e50068372abcd 
-Balance: 9999958741 (*)
-Storage: STORAGE_880a7e86e1e16109f2fcefab242e50068372abcd
+Address: 0x52abf8b1ef43f093b9346fa5ca589027580876e8 
+Balance: 9999964145 (*)
+Storage: STORAGE_52abf8b1ef43f093b9346fa5ca589027580876e8
 
 * attacker::
-Address: 0x4992914373d8fbd236ea99e4fdf3e5eabee06e54 
+Address: 0x60cd09ff2025e043578c25f5fd6a4a0958bd3922 
 Balance: 10000000000 
-Storage: STORAGE_4992914373d8fbd236ea99e4fdf3e5eabee06e54
+Storage: STORAGE_60cd09ff2025e043578c25f5fd6a4a0958bd3922
 
 * contract0::
-Address: 0xe34e4519ab09191775b6d440c04b268984cf1dc0 
+Address: 0xcc374d004671038369ad0df6ec24e750cdc3598c 
 Balance: 0 (*)
-Storage: STORAGE_e34e4519ab09191775b6d440c04b268984cf1dc0
+Storage: STORAGE_cc374d004671038369ad0df6ec24e750cdc3598c
 
 
 
