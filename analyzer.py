@@ -1,4 +1,6 @@
 import os
+from contextlib import contextmanager
+from time import time
 
 from manticore.ethereum import ManticoreEVM
 
@@ -25,6 +27,10 @@ consts.add(
     default=False,
     description="Simply avoid exploring basic blocks that end in a REVERT",
 )
+
+
+manticore_run_time = 0
+project_run_time = 0
 
 
 def clean_dir():
@@ -101,29 +107,33 @@ class Analyzer:
         return mutant_blockchain_state
 
     def _run_single_test_case(self, test_case_number):
-        test_case = self._test_cases[test_case_number]
-        print(f'Start processing test case {test_case_number + 1}')
-        not_killed_mutants = list(set(self._all_mutants) - set(self._killed_mutants))
+        with record_project_time():
+            test_case = self._test_cases[test_case_number]
+            print(f'Start processing test case {test_case_number + 1}')
+            not_killed_mutants = list(set(self._all_mutants) - set(self._killed_mutants))
 
-        conc_txs = self._concretizing_transactions(test_case)
-        mevm = self._run_test_case_on_contract(self._args.argv[0], conc_txs)
-        main_blockchain_state = BlockChainState.create_from_evm(mevm)
-        self._all_test_cases.append((main_blockchain_state, False))
+        with record_manticore_time():
+            conc_txs = self._concretizing_transactions(test_case)
 
-        is_selected = False
-        for mutant_name in not_killed_mutants:
-            mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case, conc_txs)
+        with record_project_time():
+            mevm = self._run_test_case_on_contract(self._args.argv[0], conc_txs)
+            main_blockchain_state = BlockChainState.create_from_evm(mevm)
+            self._all_test_cases.append((main_blockchain_state, False))
 
-            if mutant_blockchain_state != main_blockchain_state:
-                print(f'Killed: {mutant_name}')
-                self._killed_mutants.append(mutant_name)
-                is_selected = True
+            is_selected = False
+            for mutant_name in not_killed_mutants:
+                mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case, conc_txs)
 
-        if is_selected:
-            self._all_test_cases[-1] = (main_blockchain_state, True)
+                if mutant_blockchain_state != main_blockchain_state:
+                    print(f'Killed: {mutant_name}')
+                    self._killed_mutants.append(mutant_name)
+                    is_selected = True
 
-        mevm.kill()
-        mevm.remove_all()
+            if is_selected:
+                self._all_test_cases[-1] = (main_blockchain_state, True)
+
+            mevm.kill()
+            mevm.remove_all()
 
     def _run_test_cases(self):
         print(f'Start processing {len(self._test_cases)} test cases ...')
@@ -136,8 +146,11 @@ class Analyzer:
 
     def run(self):
         try:
-            self._find_mutants()
-            self._find_test_cases()
+            with record_project_time():
+                self._find_mutants()
+            with record_manticore_time():
+                self._find_test_cases()
+
             self._run_test_cases()
             self._print_result()
             if not self._args.no_testcases:
@@ -146,6 +159,10 @@ class Analyzer:
                 self._main_evm.kill()
             for plugin in list(self._main_evm.plugins):
                 self._main_evm.unregister_plugin(plugin)
+
+            global manticore_run_time, project_run_time
+            print('manticore run time: ' + str(manticore_run_time))
+            print('project run time: ' + str(project_run_time))
         finally:
             clean_dir()
 
@@ -217,3 +234,19 @@ class Analyzer:
                 return m2
 
         return m2
+
+
+@contextmanager
+def record_project_time():
+    start_time = time()
+    yield
+    global project_run_time
+    project_run_time += time() - start_time
+
+
+@contextmanager
+def record_manticore_time():
+    start_time = time()
+    yield
+    global manticore_run_time
+    manticore_run_time += time() - start_time

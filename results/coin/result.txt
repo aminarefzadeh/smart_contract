@@ -1,73 +1,78 @@
 Not killed mutants:
 
-currency.mutant.33.sol
-currency.mutant.20.sol
-currency.mutant.45.sol
-currency.mutant.22.sol
-currency.mutant.59.sol
-currency.mutant.32.sol
-currency.mutant.44.sol
-currency.mutant.50.sol
-currency.mutant.18.sol
-currency.mutant.62.sol
-currency.mutant.21.sol
-currency.mutant.54.sol
-currency.mutant.48.sol
-currency.mutant.40.sol
-currency.mutant.9.sol
-currency.mutant.26.sol
-currency.mutant.43.sol
-currency.mutant.51.sol
-currency.mutant.39.sol
-currency.mutant.23.sol
-currency.mutant.25.sol
-currency.mutant.2.sol
-currency.mutant.13.sol
-currency.mutant.58.sol
-currency.mutant.24.sol
-currency.mutant.12.sol
+contract.mutant.21.sol
+contract.mutant.51.sol
+contract.mutant.25.sol
+contract.mutant.45.sol
+contract.mutant.43.sol
+contract.mutant.18.sol
+contract.mutant.50.sol
+contract.mutant.62.sol
+contract.mutant.11.sol
+contract.mutant.59.sol
+contract.mutant.40.sol
+contract.mutant.20.sol
+contract.mutant.2.sol
+contract.mutant.22.sol
+contract.mutant.54.sol
+contract.mutant.23.sol
+contract.mutant.13.sol
+contract.mutant.24.sol
+contract.mutant.58.sol
+contract.mutant.10.sol
+contract.mutant.48.sol
+contract.mutant.44.sol
+contract.mutant.32.sol
+contract.mutant.26.sol
+contract.mutant.39.sol
+contract.mutant.33.sol
 
 Selected test cases
 
 ------------------------- Test case 1 -------------------------
 
-Constructor() with initial balance 0 -> RETURN
+Constructor() with initial balance 0 -> RETURN 
 
-send(0,0) -> STOP
+minter() -> RETURN
+return: 345274609478795971831956838695664217613836683101
 
-send(0,0) -> STOP
+send(596881608537442629558742856208206113940462901709,0) -> STOP
+
 
 ------------------------- Test case 2 -------------------------
 
-Constructor() with initial balance 0 -> RETURN
+Constructor() with initial balance 0 -> RETURN 
 
-balances(740335380448162599312761405552993560262274302562) -> RETURN
-return: 0
+send(22300745198530623141535718272648361505980416,0) -> STOP
 
-send(721166256882740318890923427163289459393658240413,0) -> STOP
+send(22300745198530623141535718272648361505980416,0) -> STOP
+
 
 ------------------------- Test case 3 -------------------------
 
-Constructor() with initial balance 0 -> RETURN
+Constructor() with initial balance 0 -> RETURN 
 
-send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+balances(596881608537442629558742856208206113940462901709) -> RETURN
+return: 0
 
-send(721166256882740318890923427163289459393658240413,0) -> STOP
+send(596881608537442629558742856208206113940462901709,0) -> STOP
+
 
 ------------------------- Test case 4 -------------------------
 
-Constructor() with initial balance 0 -> RETURN
+Constructor() with initial balance 0 -> RETURN 
 
-mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
 
-send(721166256882740318890923427163289459393658240413,0) -> STOP
+send(596881608537442629558742856208206113940462901709,0) -> STOP
+
 
 ------------------------- Test case 5 -------------------------
 
-Constructor() with initial balance 0 -> RETURN
+Constructor() with initial balance 0 -> RETURN 
 
-minter() -> RETURN
-return: 892625919080390735447127274997917605079736697063
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
 
-send(721166256882740318890923427163289459393658240413,0) -> STOP
+send(596881608537442629558742856208206113940462901709,0) -> STOP
+
 

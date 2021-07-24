@@ -4,7 +4,7 @@ contract SimpleStorage {
     uint storedData;
 
     function set(uint x) public {
-revert();
+selfdestruct(msg.sender);
     }
 
     function get() public view returns (uint) {
