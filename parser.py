@@ -23,7 +23,9 @@ def parse_arguments() -> argparse.Namespace:
     cryticparser.init(parser)
 
     parser.add_argument("--context", type=str, default=None, help=argparse.SUPPRESS)
-
+    parser.add_argument(
+        "--coverage", type=str, default="visited.txt", help="Where to write the coverage data"
+    )
     parser.add_argument("--names", type=str, default=None, help=argparse.SUPPRESS)
 
     parser.add_argument("--offset", type=int, default=16, help=argparse.SUPPRESS)
@@ -120,10 +122,10 @@ def parse_arguments() -> argparse.Namespace:
     )
 
     eth_flags.add_argument(
-        "--thorough-mode",
+        "--quick-mode",
         action="store_true",
-        help="Configure Manticore for more exhaustive exploration. Evaluate gas, generate testcases for dead states, "
-        "explore constant functions, and run a small suite of detectors.",
+        help="Configure Manticore for quick exploration. Disable gas, generate testcase only for alive states, "
+             "do not explore constant functions. Disable all detectors.",
     )
 
     config_flags = parser.add_argument_group("Constants")

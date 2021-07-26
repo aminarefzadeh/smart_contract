@@ -52,7 +52,7 @@ class Analyzer:
         print('Finding test cases ...')
         self._main_evm = ManticoreEVM(workspace_url=self._args.workspace)
 
-        if not self._args.thorough_mode:
+        if self._args.quick_mode:
             self._args.avoid_constant = True
             self._args.exclude_all = True
             self._args.only_alive_testcases = True
