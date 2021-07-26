@@ -1,0 +1,78 @@
+Not killed mutants:
+
+contract.mutant.12.sol
+contract.mutant.13.sol
+contract.mutant.9.sol
+contract.mutant.62.sol
+contract.mutant.32.sol
+contract.mutant.44.sol
+contract.mutant.22.sol
+contract.mutant.40.sol
+contract.mutant.33.sol
+contract.mutant.20.sol
+contract.mutant.24.sol
+contract.mutant.58.sol
+contract.mutant.2.sol
+contract.mutant.26.sol
+contract.mutant.21.sol
+contract.mutant.23.sol
+contract.mutant.25.sol
+contract.mutant.39.sol
+contract.mutant.51.sol
+contract.mutant.43.sol
+contract.mutant.59.sol
+contract.mutant.18.sol
+contract.mutant.50.sol
+contract.mutant.48.sol
+contract.mutant.45.sol
+contract.mutant.54.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+send(405710849324418888739039151004690074820411363621,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 1351001146552826344669860861427771119926913373784
+
+send(405710849324418888739039151004690074820411363621,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(405710849324418888739039151004690074820411363621) -> RETURN
+return: 0
+
+send(405710849324418888739039151004690074820411363621,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(0,0) -> STOP
+
+send(0,0) -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+send(405710849324418888739039151004690074820411363621,0) -> STOP
+
+

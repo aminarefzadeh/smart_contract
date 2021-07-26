@@ -1,0 +1,351 @@
+All test cases:
+
+------------------------- Test case 1 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(0,0) -> STOP
+
+transferTokens(0,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(518940010536788210701227303444415688353505899356) -> RETURN
+return: 0
+
+transferTokens(518940010536788210701227303444415688353505899356,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(518940010536788210701227303444415688353505899356,0) -> STOP
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+
+------------------------- Test case 6 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+
+------------------------- Test case 7 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 8 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+balances(518940010536788210701227303444415688353505874777) -> RETURN
+return: 0
+
+
+------------------------- Test case 9 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+
+------------------------- Test case 10 -------------------------
+
+Constructor() with initial balance 2080830479 -> REVERT 
+
+
+------------------------- Test case 11 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 12 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 13 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+{fallback}(b'\xd0<\x8eL<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<') -> REVERT
+
+
+------------------------- Test case 14 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(1088962004285770801798823993004289308763243855550,86276458647412067178347008437845892125965870927340028107831141025503900516030) -> REVERT
+
+
+------------------------- Test case 15 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(1461501637330902918203684832716283019655932542975,1455792646560079078679451688838485039110401556480) -> REVERT
+
+
+------------------------- Test case 16 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> REVERT
+
+
+------------------------- Test case 17 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 18 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 19 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 20 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 21 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 22 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 23 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+transferTokens(1088962004285770801798823993004289308763243855550,86276458647412067178347008437845892125965870927340028107831141025503900516030) -> REVERT
+
+
+------------------------- Test case 24 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+{fallback}(b'\xd0<\x8eL\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0') -> REVERT
+
+
+------------------------- Test case 25 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 26 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 27 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+buyTokens() -> REVERT
+
+
+------------------------- Test case 28 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+transferTokens(1461501637330902918203684832716283019655932542975,1600660942523603594778126302917954936106100638338328800788480) -> REVERT
+
+
+------------------------- Test case 29 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+transferTokens(1088962004285770801798823993004289308763243855550,86276458647412067178347008437845892125965870927340028107831141025503900516030) -> REVERT
+
+
+------------------------- Test case 30 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+{fallback}(b'\xd0<\x8eL\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0\xd0') -> REVERT
+
+
+------------------------- Test case 31 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 32 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+transferTokens(1461501637330902918203684832716283019655932542975,372682917519380244141939632342652170012262798458880) -> REVERT
+
+
+------------------------- Test case 33 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+transferTokens(1088962004285770801798823993004289308763243855550,86276458647412067178347008437845892125965870927340028107831141025503900516030) -> REVERT
+
+
+------------------------- Test case 34 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(942561626794114707502457529271867331302426643619) -> RETURN
+return: 0
+
+buyTokens() -> REVERT
+
+
+------------------------- Test case 35 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302436670627,0) -> STOP
+
+{fallback}(b'\xbe\x01\xc2\x17\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe\xbe') -> REVERT
+
+
+------------------------- Test case 36 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 37 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426643619,0) -> STOP
+
+buyTokens() -> REVERT
+
+
+------------------------- Test case 38 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(942561626794114707502457529271867331302426637219,0) -> STOP
+
+transferTokens(0,1) -> REVERT
+
+

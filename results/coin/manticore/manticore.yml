@@ -1,6 +1,0 @@
-cli:
-  argv:
-  - input/contract.sol
-  - input/mutants
-  skip_reverts: true
-  workspace: manticore_results

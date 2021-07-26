@@ -1,0 +1,54 @@
+Message: STOP
+Last exception: STOP
+Last instruction at contract 45e2171c24eb102da3c4af0634f697d3566d9030 offset 81
+    6  function test_me(int a, int b, int c) public pure {
+        7          int x = 0;
+        8          int y = 0;
+        9          int z = 0;
+        10  
+        11          if (a != 0) {
+        12              x = -2;
+        13          }
+        14  
+        15          if (b < 5) {
+        16              if (a == 0 && c != 0) {
+        17                  y = 1;
+        18              }
+        19              z = 2;
+        20          }
+        21  
+        22          // will fail when: a == 0 && b < 5 && c != 0
+        23          assert(x + y + z != 3);
+        24      }
+
+3 accounts.
+* owner::
+Address: 0x1d22054a0246a93cf3d475154215faaa71bb0cbd 
+Balance: 9999963189 (*)
+Storage: STORAGE_1d22054a0246a93cf3d475154215faaa71bb0cbd
+
+* attacker::
+Address: 0xe9a7760a4f508f8d9bf4245c81984707051a396b 
+Balance: 9999954590 (*)
+Storage: STORAGE_e9a7760a4f508f8d9bf4245c81984707051a396b
+
+* contract0::
+Address: 0x45e2171c24eb102da3c4af0634f697d3566d9030 
+Balance: 0 (*)
+Storage: STORAGE_45e2171c24eb102da3c4af0634f697d3566d9030
+Code:
+	b'608060405260043610603f576000357c01000000000000000000000000000000'
+	b'00000000000000000000000000900463ffffffff1680637eda09e8146044575b'
+	b'600080fd5b348015604f57600080fd5b50608060048036038101908080359060'
+	b'2001909291908035906020019092919080359060200190929190505050608256'
+	b'5b005b6000806000809250600091506000905060008614151560bf577fffffff'
+	b'fffffffffffffffffffffffffffffffffffffffffffffffffffffffffe92505b'
+	b'600585121560e55760008614801560d7575060008414155b1560e05760019150'
+	b'5b600290505b600381838501011415151560f557fe5b5050505050505600a165'
+	b'627a7a72305820be5f18b4420810d8f1e23ffa486aab1a85b7907616eaed5eb5'
+	b'98362bbed849e90029'
+Coverage 92% (on this state)
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

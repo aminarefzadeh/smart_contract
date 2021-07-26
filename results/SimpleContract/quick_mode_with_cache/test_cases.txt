@@ -1,0 +1,43 @@
+All test cases:
+
+------------------------- Test case 1 -------------------------
+
+* SELECTED
+
+Constructor(0,0) with initial balance 0 -> RETURN 
+
+check(0) -> STOP
+
+check(0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+Constructor() with initial balance 1610612736 -> REVERT 
+
+
+------------------------- Test case 3 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> THROW 
+
+
+------------------------- Test case 4 -------------------------
+
+* SELECTED
+
+Constructor(72653859913610161834397480789764961790287049201970549985542013495161179381920,72653859913610161834397480789764961790287049201970549985542013495161179381920) with initial balance 0 -> RETURN 
+
+check(43138229323706033589173504218922946062982935463670014053915570512751950258015) -> THROW
+
+
+------------------------- Test case 5 -------------------------
+
+* SELECTED
+
+Constructor(4703919738795935662080,4703919738795935662080) with initial balance 0 -> RETURN 
+
+check(1204203453131759529492480) -> THROW
+
+

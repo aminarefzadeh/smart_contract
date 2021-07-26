@@ -1,0 +1,24 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract 8e896f2a47e73a2499add1fa8b569998fef8683 offset f
+    3    event Paym
+
+3 accounts.
+* owner::
+Address: 0x5262d321e21fb51d5feecc05ac731e6a93f7a12b 
+Balance: 9999942155 (*)
+Storage: STORAGE_5262d321e21fb51d5feecc05ac731e6a93f7a12b
+
+* attacker::
+Address: 0xa519ecd4fef1307af0c589de2cf803eebc338ca3 
+Balance: 10000000000 
+Storage: STORAGE_a519ecd4fef1307af0c589de2cf803eebc338ca3
+
+* contract0::
+Address: 0x8e896f2a47e73a2499add1fa8b569998fef8683 
+Balance: 0 (*)
+Storage: STORAGE_8e896f2a47e73a2499add1fa8b569998fef8683
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

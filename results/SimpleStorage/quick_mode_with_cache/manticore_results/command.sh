@@ -1,0 +1,1 @@
+script.py input/contract.sol input/mutants --workspace manticore_results --quick-mode

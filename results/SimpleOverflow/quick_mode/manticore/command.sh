@@ -1,0 +1,1 @@
+/home/amin/.virtualenvs/proje/bin/manticore input/contract.sol --quick-mode

@@ -1,0 +1,24 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract eaec180731b4ccdb60c48c2f50c6455b22d0c7ef offset 13
+    2      uint pri
+
+3 accounts.
+* owner::
+Address: 0xdb4b70769d9fc683fbcb0d610c8e9574c9a5bdf1 
+Balance: 9999964145 (*)
+Storage: STORAGE_db4b70769d9fc683fbcb0d610c8e9574c9a5bdf1
+
+* attacker::
+Address: 0x48d98feb4e22193c336186890b597dd3c3529f40 
+Balance: 10000000000 
+Storage: STORAGE_48d98feb4e22193c336186890b597dd3c3529f40
+
+* contract0::
+Address: 0xeaec180731b4ccdb60c48c2f50c6455b22d0c7ef 
+Balance: 0 (*)
+Storage: STORAGE_eaec180731b4ccdb60c48c2f50c6455b22d0c7ef
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

@@ -10,6 +10,8 @@ import logging
 
 logger = logging.getLogger(__name__)
 
+cached_compile = {}
+
 
 def create_contract(self, owner, balance=0, address=None, init=None, name=None, gas=None):
     """ Creates a contract with zero price (no gas will use)
@@ -95,9 +97,15 @@ def solidity_create_contract_with_zero_price(
     while contract_names:
         contract_name_i = contract_names.pop()
         try:
-            compile_results = self._compile(
-                source_code, contract_name_i, libraries=deps, crytic_compile_args=compile_args
-            )
+            global cached_compile
+            cache_key = (source_code, contract_name_i)
+            if cache_key in cached_compile:
+                compile_results = cached_compile[cache_key]
+            else:
+                compile_results = self._compile(
+                    source_code, contract_name_i, libraries=deps, crytic_compile_args=compile_args
+                )
+                cached_compile[cache_key] = compile_results
             md = SolidityMetadata(*compile_results)
             if contract_name_i == contract_name:
                 constructor_types = md.get_constructor_arguments()

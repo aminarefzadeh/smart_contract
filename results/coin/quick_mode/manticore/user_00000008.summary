@@ -1,0 +1,23 @@
+Message: STOP
+Last exception: STOP
+Last instruction at contract 9d4796e99d5feb8bb34eccdcb8012d2166d73fc4 offset 1ae
+    24  function send(address receiver, uint amount) public {
+        25          if (balances[msg.sender] < amount) return;
+        26          balances[msg.sender] -= amount;
+        27          balances[receiver] += amount;
+        28          emit Sent(msg.sender, receiver, amount);
+        29      }
+
+3 accounts.
+* owner::
+Address: 0xb45cf7c6a037daaed0748efa91e887b9b1e13d72 
+Balance: 9999928539 (*)
+Storage: STORAGE_b45cf7c6a037daaed0748efa91e887b9b1e13d72
+
+* attacker::
+Address: 0x1ce86a16d0390b8de8216021227a7e2ee9e916c5 
+Balance: 9999942838 (*)
+Storage: STORAGE_1ce86a16d0390b8de8216021227a7e2ee9e916c5
+
+* contract0::
+Address: 0x9d4796e99d5feb8bb34eccdcb8012d2166d73fc4 

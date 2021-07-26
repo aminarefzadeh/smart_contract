@@ -1,0 +1,102 @@
+All test cases:
+
+------------------------- Test case 1 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(0,0) -> STOP
+
+transferTokens(0,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 6 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+buyTokens() -> STOP
+
+
+------------------------- Test case 7 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+
+------------------------- Test case 8 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+balances(341725885862905995750840471165108329186894414107) -> RETURN
+return: 0
+
+
+------------------------- Test case 9 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(341725885862905995750840471165108329186894414107) -> RETURN
+return: 0
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+
+------------------------- Test case 10 -------------------------
+
+Constructor() with initial balance 2080830479 -> REVERT 
+
+

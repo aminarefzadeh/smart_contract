@@ -1,0 +1,5 @@
+cli:
+  argv:
+  - input/contract.sol
+  quick_mode: true
+  skip_reverts: true

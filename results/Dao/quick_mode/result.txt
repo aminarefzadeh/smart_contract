@@ -1,0 +1,98 @@
+Not killed mutants:
+
+contract.mutant.66.sol
+contract.mutant.72.sol
+contract.mutant.13.sol
+contract.mutant.71.sol
+contract.mutant.76.sol
+contract.mutant.60.sol
+contract.mutant.55.sol
+contract.mutant.78.sol
+contract.mutant.33.sol
+contract.mutant.37.sol
+contract.mutant.64.sol
+contract.mutant.77.sol
+contract.mutant.56.sol
+contract.mutant.50.sol
+contract.mutant.63.sol
+contract.mutant.12.sol
+contract.mutant.39.sol
+contract.mutant.28.sol
+contract.mutant.58.sol
+contract.mutant.34.sol
+contract.mutant.79.sol
+contract.mutant.43.sol
+contract.mutant.62.sol
+contract.mutant.69.sol
+contract.mutant.19.sol
+contract.mutant.51.sol
+contract.mutant.54.sol
+contract.mutant.17.sol
+contract.mutant.24.sol
+contract.mutant.5.sol
+contract.mutant.2.sol
+contract.mutant.52.sol
+contract.mutant.67.sol
+contract.mutant.44.sol
+contract.mutant.23.sol
+contract.mutant.48.sol
+contract.mutant.57.sol
+contract.mutant.68.sol
+contract.mutant.47.sol
+contract.mutant.74.sol
+contract.mutant.1.sol
+contract.mutant.80.sol
+contract.mutant.53.sol
+contract.mutant.49.sol
+contract.mutant.73.sol
+contract.mutant.61.sol
+contract.mutant.6.sol
+contract.mutant.75.sol
+contract.mutant.14.sol
+contract.mutant.7.sol
+contract.mutant.70.sol
+contract.mutant.38.sol
+contract.mutant.27.sol
+contract.mutant.65.sol
+contract.mutant.59.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+transferTokens(0,0) -> STOP
+
+transferTokens(0,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+buyTokens() -> STOP
+
+transferTokens(1119775751467996922452844361551174690469038128868,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(1119775751467996922452844361551174690469038128868) -> RETURN
+return: 0
+
+buyTokens() -> STOP
+
+
