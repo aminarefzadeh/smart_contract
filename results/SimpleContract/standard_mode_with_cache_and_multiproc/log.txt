@@ -1,0 +1,283 @@
+Finding test cases ...
+Concretizing testcase 1
+Concretizing testcase 2
+Concretizing testcase 3
+Concretizing testcase 4
+Concretizing testcase 5
+Concretizing testcase 6
+Concretizing testcase 7
+Concretizing testcase 8
+Concretizing testcase 9
+Start running test case 1 on main contract
+Start running test case 2 on main contract
+Start running test case 3 on main contract
+Start running test case 4 on main contract
+Start running test case 5 on main contract
+Start running test case 6 on main contract
+Start running test case 7 on main contract
+Start running test case 8 on main contract
+Start running test case 9 on main contract
+Running 9 testcases on mutants ...
+Start running test case 1 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 1 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 2 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 2 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 3 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 3 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 4 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 4 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 5 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 5 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 6 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 6 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 7 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 7 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 8 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 8 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 9 on contract.mutant.0.sol
+Run test case on contract.mutant.0.sol
+Start running test case 9 on contract.mutant.1.sol
+Run test case on contract.mutant.1.sol
+Start running test case 1 on contract.mutant.10.sol
+Run test case on contract.mutant.10.sol
+Start running test case 1 on contract.mutant.11.sol
+Run test case on contract.mutant.11.sol
+2021-07-27 21:33:47,814: [31690] m.c.worker:ERROR: Exception in state 5: NotImplementedError('__bool__ for Bool')
+Traceback (most recent call last):
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/core/worker.py", line 121, in run
+    current_state.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/ethereum/state.py", line 8, in execute
+    return self._platform.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 3093, in execute
+    self.current_vm.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1312, in execute
+    last_pc, last_gas, instruction, arguments, fee, allocated = self._checkpoint()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1199, in _checkpoint
+    fee = self._calculate_gas(*arguments)
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1172, in _calculate_gas
+    return current.fee + implementation(*arguments)
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 2296, in SELFDESTRUCT_gas
+    if not self.world.account_exists(recipient) and self.world.get_balance(self.address) != 0:
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/core/smtlib/expression.py", line 168, in __bool__
+    raise NotImplementedError("__bool__ for Bool")
+NotImplementedError: __bool__ for Bool
+
+Mutant contract.mutant.11.sol killed by testcase 1
+Start running test case 1 on contract.mutant.13.sol
+Run test case on contract.mutant.13.sol
+Mutant contract.mutant.10.sol killed by testcase 1
+Start running test case 1 on contract.mutant.12.sol
+Run test case on contract.mutant.12.sol
+Mutant contract.mutant.12.sol killed by testcase 1
+Start running test case 1 on contract.mutant.14.sol
+Run test case on contract.mutant.14.sol
+Start running test case 2 on contract.mutant.13.sol
+Run test case on contract.mutant.13.sol
+Start running test case 3 on contract.mutant.13.sol
+Run test case on contract.mutant.13.sol
+2021-07-27 21:33:49,617: [31689] m.c.worker:ERROR: Exception in state 4: NotImplementedError('__bool__ for Bool')
+Traceback (most recent call last):
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/core/worker.py", line 121, in run
+    current_state.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/ethereum/state.py", line 8, in execute
+    return self._platform.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 3093, in execute
+    self.current_vm.execute()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1312, in execute
+    last_pc, last_gas, instruction, arguments, fee, allocated = self._checkpoint()
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1199, in _checkpoint
+    fee = self._calculate_gas(*arguments)
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 1172, in _calculate_gas
+    return current.fee + implementation(*arguments)
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/platforms/evm.py", line 2296, in SELFDESTRUCT_gas
+    if not self.world.account_exists(recipient) and self.world.get_balance(self.address) != 0:
+  File "/home/amin/.virtualenvs/proje/lib/python3.8/site-packages/manticore/core/smtlib/expression.py", line 168, in __bool__
+    raise NotImplementedError("__bool__ for Bool")
+NotImplementedError: __bool__ for Bool
+
+Mutant contract.mutant.14.sol killed by testcase 1
+Start running test case 1 on contract.mutant.16.sol
+Run test case on contract.mutant.16.sol
+Mutant contract.mutant.13.sol killed by testcase 3
+Start running test case 1 on contract.mutant.15.sol
+Run test case on contract.mutant.15.sol
+Mutant contract.mutant.16.sol killed by testcase 1
+Start running test case 1 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Mutant contract.mutant.15.sol killed by testcase 1
+Start running test case 1 on contract.mutant.17.sol
+Run test case on contract.mutant.17.sol
+Start running test case 2 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Start running test case 3 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Mutant contract.mutant.17.sol killed by testcase 1
+Start running test case 1 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 4 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Start running test case 2 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 3 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 5 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Start running test case 4 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 6 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Start running test case 5 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 7 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Start running test case 6 on contract.mutant.19.sol
+Run test case on contract.mutant.19.sol
+Start running test case 8 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Mutant contract.mutant.19.sol killed by testcase 6
+Start running test case 1 on contract.mutant.20.sol
+Run test case on contract.mutant.20.sol
+Start running test case 9 on contract.mutant.18.sol
+Run test case on contract.mutant.18.sol
+Mutant contract.mutant.20.sol killed by testcase 1
+Start running test case 1 on contract.mutant.22.sol
+Run test case on contract.mutant.22.sol
+Start running test case 1 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Mutant contract.mutant.22.sol killed by testcase 1
+Start running test case 1 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 2 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 3 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 2 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 3 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 4 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 4 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 5 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 5 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 6 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 6 on contract.mutant.24.sol
+Run test case on contract.mutant.24.sol
+Start running test case 7 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Mutant contract.mutant.24.sol killed by testcase 6
+Start running test case 1 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 8 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 2 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 3 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 9 on contract.mutant.2.sol
+Run test case on contract.mutant.2.sol
+Start running test case 4 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 1 on contract.mutant.21.sol
+Run test case on contract.mutant.21.sol
+Start running test case 5 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 6 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Mutant contract.mutant.21.sol killed by testcase 1
+Start running test case 1 on contract.mutant.23.sol
+Run test case on contract.mutant.23.sol
+Start running test case 7 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Mutant contract.mutant.23.sol killed by testcase 1
+Start running test case 1 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 8 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 2 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 3 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 4 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 9 on contract.mutant.4.sol
+Run test case on contract.mutant.4.sol
+Start running test case 5 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 1 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 6 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 2 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 3 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 7 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 4 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 8 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 5 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 6 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 9 on contract.mutant.3.sol
+Run test case on contract.mutant.3.sol
+Start running test case 7 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 1 on contract.mutant.5.sol
+Run test case on contract.mutant.5.sol
+Mutant contract.mutant.5.sol killed by testcase 1
+Start running test case 1 on contract.mutant.7.sol
+Run test case on contract.mutant.7.sol
+Start running test case 8 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Start running test case 2 on contract.mutant.7.sol
+Run test case on contract.mutant.7.sol
+Start running test case 3 on contract.mutant.7.sol
+Run test case on contract.mutant.7.sol
+Start running test case 9 on contract.mutant.6.sol
+Run test case on contract.mutant.6.sol
+Mutant contract.mutant.7.sol killed by testcase 3
+Start running test case 1 on contract.mutant.9.sol
+Run test case on contract.mutant.9.sol
+Start running test case 1 on contract.mutant.8.sol
+Run test case on contract.mutant.8.sol
+Mutant contract.mutant.9.sol killed by testcase 1
+Mutant contract.mutant.8.sol killed by testcase 1
+Write result in result.txt
+
+Number of mutants: 25
+Number of killed mutants: 18
+2021-07-27 21:34:25,531: [33899] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,534: [33898] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,536: [33902] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,544: [33905] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,549: [33910] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,550: [33911] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,553: [33914] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,555: [33907] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+2021-07-27 21:34:25,557: [33916] m.c.plugin:WARNING: Caught will_solve in state None, but failed to capture its initialization
+manticore run time: 20.932129859924316
+project run time: 55.587836027145386

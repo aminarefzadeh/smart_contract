@@ -1,0 +1,24 @@
+Message: THROW
+Last exception: THROW
+Last instruction at contract 655bb921d4b42ac556932ac4005813982fc68008 offset 4c
+    6  assert(value == value2)
+
+3 accounts.
+* owner::
+Address: 0xeae18d4175f05a18f67bfac77d9b0e5bdcc56381 
+Balance: 9999770000 (*)
+Storage: STORAGE_eae18d4175f05a18f67bfac77d9b0e5bdcc56381
+
+* attacker::
+Address: 0x1a444ce49b3dfe8fc5cc6acd49608d8b77a97f8e 
+Balance: 10000000000 
+Storage: STORAGE_1a444ce49b3dfe8fc5cc6acd49608d8b77a97f8e
+
+* contract0::
+Address: 0x655bb921d4b42ac556932ac4005813982fc68008 
+Balance: 0 (*)
+Storage: STORAGE_655bb921d4b42ac556932ac4005813982fc68008
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

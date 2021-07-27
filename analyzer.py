@@ -1,3 +1,4 @@
+import multiprocessing
 import os
 from contextlib import contextmanager
 from time import time
@@ -44,9 +45,9 @@ class Analyzer:
         self._args = args
         self._main_evm = None
         self._test_cases = []
-        self._killed_mutants = []
         self._all_mutants = []
-        self._all_test_cases = []
+        self._main_contract_results = []
+        self._conc_testcases = []
 
     def _find_test_cases(self):
         print('Finding test cases ...')
@@ -83,22 +84,23 @@ class Analyzer:
 
         self._test_cases = list(self._main_evm.all_states)
 
-    def _concretizing_transactions(self, test_case):
-        print('Concretizing symbolic values ...')
-        conc_txs = []
-        blockchain = test_case.platform
-        self._main_evm.fix_unsound_symbolication(test_case)
-        human_transactions = list(blockchain.human_transactions)
-        for sym_tx in human_transactions:
-            conc_tx = sym_tx.concretize(test_case)
-            conc_txs.append(conc_tx)
-        return conc_txs
+    def _concretizing_testcases(self):
+        for test_case_number in range(len(self._test_cases)):
+            test_case = self._test_cases[test_case_number]
+            print(f'Concretizing testcase {test_case_number + 1}')
+            conc_txs = []
+            blockchain = test_case.platform
+            self._main_evm.fix_unsound_symbolication(test_case)
+            human_transactions = list(blockchain.human_transactions)
+            for sym_tx in human_transactions:
+                conc_tx = sym_tx.concretize(test_case)
+                conc_txs.append(conc_tx)
+            self._conc_testcases.append(conc_txs)
 
     def _find_mutants(self):
-        self._all_mutants = os.listdir(self._args.argv[1])
+        self._all_mutants = sorted(os.listdir(self._args.argv[1]))
 
-    def _run_test_case_on_mutant(self, mutant_name, test_case, conc_txs):
-        print(f'Run test case on {mutant_name}')
+    def _run_test_case_on_mutant(self, mutant_name, conc_txs):
         mutant_mevm = self._run_test_case_on_contract(os.path.join(self._args.argv[1], mutant_name), conc_txs)
         mutant_blockchain_state = BlockChainState.create_from_evm(mutant_mevm)
         # terminate
@@ -106,52 +108,77 @@ class Analyzer:
         mutant_mevm.remove_all()
         return mutant_blockchain_state
 
-    def _run_single_test_case(self, test_case_number):
-        with record_project_time():
-            test_case = self._test_cases[test_case_number]
-            print(f'Start processing test case {test_case_number + 1}')
-            not_killed_mutants = list(set(self._all_mutants) - set(self._killed_mutants))
+    def _run_test_cases_on_main_contract(self):
+        for test_case_number in range(len(self._test_cases)):
+            print(f'Start running test case {test_case_number + 1} on main contract')
+            conc_txs = self._conc_testcases[test_case_number]
 
-        with record_manticore_time():
-            conc_txs = self._concretizing_transactions(test_case)
-
-        with record_project_time():
             mevm = self._run_test_case_on_contract(self._args.argv[0], conc_txs)
             main_blockchain_state = BlockChainState.create_from_evm(mevm)
-            self._all_test_cases.append((main_blockchain_state, False))
-
-            is_selected = False
-            for mutant_name in not_killed_mutants:
-                mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, test_case, conc_txs)
-
-                if mutant_blockchain_state != main_blockchain_state:
-                    print(f'Killed: {mutant_name}')
-                    self._killed_mutants.append(mutant_name)
-                    is_selected = True
-
-            if is_selected:
-                self._all_test_cases[-1] = (main_blockchain_state, True)
-
+            self._main_contract_results.append(main_blockchain_state)
             mevm.kill()
             mevm.remove_all()
 
-    def _run_test_cases(self):
-        print(f'Start processing {len(self._test_cases)} test cases ...')
+    def _run_testcases_on_single_mutant(self, mutant_name, result_dict):
         for test_case_number in range(len(self._test_cases)):
+            print(f'Start running test case {test_case_number + 1} on {mutant_name}')
+            conc_txs = self._conc_testcases[test_case_number]
+            mutant_blockchain_state = self._run_test_case_on_mutant(mutant_name, conc_txs)
+            main_blockchain_state = self._main_contract_results[test_case_number]
+            if mutant_blockchain_state != main_blockchain_state:
+                print(f'Mutant {mutant_name} killed by testcase {test_case_number + 1}')
+                result_dict[mutant_name] = test_case_number
+                return
+            result_dict[mutant_name] = None
+
+    @staticmethod
+    def get_mutants_in_batch(all_mutants):
+        mutants_num = len(all_mutants)
+        number_of_batch = min(int(mutants_num/10), 10)
+        mutants_batch = [[] for _ in range(number_of_batch)]
+        for i in range(mutants_num):
+            mutants_batch[i%number_of_batch].append(all_mutants[i])
+        return mutants_batch
+
+    def _run_test_cases_on_mutants(self):
+        print(f'Running {len(self._test_cases)} testcases on mutants ...')
+        manager = multiprocessing.Manager()
+        result_dict = manager.dict()
+        mutant_batchs = self.get_mutants_in_batch(self._all_mutants)
+        workers = []
+        for i in range(len(mutant_batchs)):
+            p = multiprocessing.Process(
+                target=self._run_test_cases_on_mutants_batch,
+                args=(mutant_batchs[i], result_dict)
+            )
+            workers.append(p)
+            p.start()
+
+        for p in workers:
+            p.join()
+
+        self._results = result_dict
+
+    def _run_test_cases_on_mutants_batch(self, mutant_list, result_dict):
+        for mutant in mutant_list:
             try:
-                self._run_single_test_case(test_case_number)
+                self._run_testcases_on_single_mutant(mutant, result_dict)
             except Exception as e:
                 print(e)
-                print('exception on running test case. continuing ...')
+                print('exception on running test case on mutant. continuing ...')
 
     def run(self):
         try:
-            with record_project_time():
-                self._find_mutants()
+            self._find_mutants()
+
             with record_manticore_time():
                 self._find_test_cases()
+                self._concretizing_testcases()
 
-            self._run_test_cases()
+            with record_project_time():
+                self._run_test_cases_on_main_contract()
+                self._run_test_cases_on_mutants()
+
             self._print_result()
             if not self._args.no_testcases:
                 self._main_evm.finalize(only_alive_states=self._args.only_alive_testcases)
@@ -170,7 +197,9 @@ class Analyzer:
         print('Write result in result.txt')
         f = open(f'result.txt', 'w')
         f.write('Not killed mutants:\n\n')
-        not_killed_mutants = list(set(self._all_mutants) - set(self._killed_mutants))
+        not_killed_mutants = [
+            mutant_name for mutant_name, test_case_number in self._results.items() if test_case_number is None
+        ]
         for mutant_name in not_killed_mutants:
             f.write(f'{mutant_name}\n')
 
@@ -180,13 +209,19 @@ class Analyzer:
         f2 = open('test_cases.txt', 'w')
         f2.write('All test cases:\n\n')
 
-        for i in range(len(self._all_test_cases)):
-            test_case, is_selected = self._all_test_cases[i]
-            f2.write(f'------------------------- Test case {i+1} -------------------------\n\n')
+        selected_test_case_number = set([
+            test_case_number for test_case_number in self._results.values() if test_case_number is not None
+        ])
+
+        for test_case_number in range(len(self._test_cases)):
+            test_case = self._main_contract_results[test_case_number]
+            is_selected = test_case_number in selected_test_case_number
+
+            f2.write(f'------------------------- Test case {test_case_number+1} -------------------------\n\n')
 
             if is_selected:
                 f2.write(f'* SELECTED\n\n')
-                f.write(f'------------------------- Test case {i+1} -------------------------\n\n')
+                f.write(f'------------------------- Test case {test_case_number+1} -------------------------\n\n')
                 f.write(str(test_case.transaction_state))
                 f.write('\n\n')
 
@@ -198,7 +233,7 @@ class Analyzer:
 
         print('')
         print(f'Number of mutants: {len(self._all_mutants)}')
-        print(f'Number of killed mutants: {len(self._killed_mutants)}')
+        print(f'Number of killed mutants: {len(self._all_mutants) - len(not_killed_mutants)}')
 
     def _run_test_case_on_contract(self, contract_code, conc_txs):
         m2 = ManticoreEVM()

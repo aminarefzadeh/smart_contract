@@ -1,0 +1,24 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract 1c6aa83e54f9c68199af861c7f7d8df9e1cfa569 offset f
+    1  sed on a cla
+
+3 accounts.
+* owner::
+Address: 0xde0f10804f4f737bafac996998d3030a655e358b 
+Balance: 9999963255 (*)
+Storage: STORAGE_de0f10804f4f737bafac996998d3030a655e358b
+
+* attacker::
+Address: 0x681610f4be5cb514772605728dce0ece863c198e 
+Balance: 10000000000 
+Storage: STORAGE_681610f4be5cb514772605728dce0ece863c198e
+
+* contract0::
+Address: 0x1c6aa83e54f9c68199af861c7f7d8df9e1cfa569 
+Balance: 0 (*)
+Storage: STORAGE_1c6aa83e54f9c68199af861c7f7d8df9e1cfa569
+
+
+
+(*) Example solution given. Value is symbolic and may take other values
