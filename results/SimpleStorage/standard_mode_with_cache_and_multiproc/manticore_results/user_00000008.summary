@@ -1,0 +1,43 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract 9ca7dd0efb642d24da3b4e257993ca61969f5c6b offset 4d
+    3  contract SimpleStorage {
+        4      uint storedData;
+        5  
+        6      function set(uint x) public {
+        7          storedData = x;
+        8      }
+        9  
+        10      function get() public view returns (uint) {
+        11          return storedData;
+        12      }
+        13  }
+
+3 accounts.
+* owner::
+Address: 0xe7f8432f0c7708b82b5d2e866b22eeab30a513bc 
+Balance: 9999964359 (*)
+Storage: STORAGE_e7f8432f0c7708b82b5d2e866b22eeab30a513bc
+
+* attacker::
+Address: 0x11052320859565cdaf5e1e388adc61dd25ff7706 
+Balance: 9999954303 (*)
+Storage: STORAGE_11052320859565cdaf5e1e388adc61dd25ff7706
+
+* contract0::
+Address: 0x9ca7dd0efb642d24da3b4e257993ca61969f5c6b 
+Balance: 0 (*)
+Storage: STORAGE_9ca7dd0efb642d24da3b4e257993ca61969f5c6b
+Code:
+	b'6080604052600436106049576000357c01000000000000000000000000000000'
+	b'00000000000000000000000000900463ffffffff16806360fe47b114604e5780'
+	b'636d4ce63c146078575b600080fd5b348015605957600080fd5b506076600480'
+	b'3603810190808035906020019092919050505060a0565b005b34801560835760'
+	b'0080fd5b50608a60aa565b6040518082815260200191505060405180910390f3'
+	b'5b8060008190555050565b600080549050905600a165627a7a72305820045690'
+	b'ed26e7b11e3a2c5868a72886e2efb2ea32f4ca72b44d81ab09d84920220029'
+Coverage 57% (on this state)
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

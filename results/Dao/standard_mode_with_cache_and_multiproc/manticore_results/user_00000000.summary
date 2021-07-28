@@ -1,0 +1,24 @@
+Message: STOP
+Last exception: STOP
+Last instruction at contract 7a7362ce925e4f71d57264368cd81b157a9bd433 offset 165
+    16  function transferTokens(address _to, uint _amount){
+        17      if (balances[msg.sender] < _amount)
+        18        throw;
+        19      balances[_to]=_amount;
+        20      balances[msg.sender]-=_amount;
+        21      TokensTransfered(msg.sender, _to, _amount);
+        22    }
+
+3 accounts.
+* owner::
+Address: 0xabc69bde835abef695a9d28135e65e6aa9b912ce 
+Balance: 9999941832 (*)
+Storage: STORAGE_abc69bde835abef695a9d28135e65e6aa9b912ce
+
+* attacker::
+Address: 0x326642a017c3f64ae4f1584b25bfb28a2dc62e65 
+Balance: 9999944522 (*)
+Storage: STORAGE_326642a017c3f64ae4f1584b25bfb28a2dc62e65
+
+* contract0::
+Address: 0x7a7362ce925e4f71d57264368cd81b157a9bd433 

@@ -1,0 +1,5 @@
+cli:
+  argv:
+  - input/contract.sol
+  - input/mutants
+  workspace: manticore_results

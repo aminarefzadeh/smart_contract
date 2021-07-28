@@ -1,0 +1,54 @@
+Transactions No. 0
+Type: CREATE (0)
+From: owner(0x401a53105e71fef8320d0d384d40b78a5da0d499) 
+To: contract0(0x65dd2c75cf299de0f56d87d5714b24fe3930d395) 
+Value: 0 (*)
+Gas used: 230000 
+Data: 0x60806040526000805534801561001457600080fd5b5060b9806100236000396000f300608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631003e2d2146044575b600080fd5b348015604f57600080fd5b50606c60048036038101908080359060200190929190505050606e565b005b8060008082825401925050819055508060005410151515608a57fe5b505600a165627a7a72305820a42f2f47578d165b9805af07a96aa41ad6d89d45eb9bfcc618d73ec521c570d80029 
+Return_data: 0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff1680631003e2d2146044575b600080fd5b348015604f57600080fd5b50606c60048036038101908080359060200190929190505050606e565b005b8060008082825401925050819055508060005410151515608a57fe5b505600a165627a7a72305820a42f2f47578d165b9805af07a96aa41ad6d89d45eb9bfcc618d73ec521c570d80029  (*)
+Function call:
+Constructor() -> RETURN 
+
+
+Transactions No. 1
+Type: CALL (0)
+From: attacker(0x3c16c804a34b4d8c302225d21828adf7a3d01000) 
+To: contract0(0x65dd2c75cf299de0f56d87d5714b24fe3930d395) 
+Value: 0 (*)
+Gas used: 230000 
+Data: 0x1003e2d25ee413f45a8851696c625fea572072e7f715598fbc0fac658dbc6b9d53a3335b (*)
+Return_data: 0x () 
+
+Function call:
+add(42920386618538272168559443765232399998312579937685311073158392339996478747483) -> STOP (*)
+
+
+Transactions No. 2
+Type: CALL (0)
+From: attacker(0x3c16c804a34b4d8c302225d21828adf7a3d01000) 
+To: contract0(0x65dd2c75cf299de0f56d87d5714b24fe3930d395) 
+Value: 0 (*)
+Gas used: 230000 
+Data: 0x1003e2d28020 (*)
+Return_data: 0x () 
+
+Function call:
+add(57952583724731006010332158024367727319141471817520301826388683402397928652800) -> STOP (*)
+
+
+Transactions No. 3
+Type: CALL (0)
+From: attacker(0x3c16c804a34b4d8c302225d21828adf7a3d01000) 
+To: contract0(0x65dd2c75cf299de0f56d87d5714b24fe3930d395) 
+Value: 9999431392 (*)
+Gas used: 230000 
+Data: 0xef03e2d2 (*)
+Return_data: 0x () 
+
+Function call:
+{fallback}(b'\xef\x03\xe2\xd2\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef\xef') -> REVERT (*)
+
+
+
+
+(*) Example solution given. Value is symbolic and may take other values

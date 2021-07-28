@@ -1,0 +1,532 @@
+All test cases:
+
+------------------------- Test case 1 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(1053670755276735047520928604498097755150445516711) -> RETURN
+return: 0
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+* SELECTED
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(0,0) -> STOP
+
+send(0,0) -> STOP
+
+
+------------------------- Test case 6 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 7 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 8 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 9 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 10 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+
+------------------------- Test case 11 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,5686690025625308901091608159525332184025006080) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 12 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 13 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(0,0) -> STOP
+
+send(0,1) -> STOP
+
+
+------------------------- Test case 14 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+
+------------------------- Test case 15 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+
+------------------------- Test case 16 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(0,0) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 17 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 18 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+
+------------------------- Test case 19 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 20 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+
+------------------------- Test case 21 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+
+------------------------- Test case 22 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+
+------------------------- Test case 23 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+
+------------------------- Test case 24 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+
+------------------------- Test case 25 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+
+------------------------- Test case 26 -------------------------
+
+Constructor() with initial balance 1610612736 -> REVERT 
+
+
+------------------------- Test case 27 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> REVERT
+
+
+------------------------- Test case 28 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 29 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+{fallback}(b'\xd8\x0f\x9c4\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') -> REVERT
+
+
+------------------------- Test case 30 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 31 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+
+------------------------- Test case 32 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+minter() -> REVERT
+
+
+------------------------- Test case 33 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+minter() -> REVERT
+
+
+------------------------- Test case 34 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+minter() -> REVERT
+
+
+------------------------- Test case 35 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+minter() -> REVERT
+
+
+------------------------- Test case 36 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 37 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 38 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 39 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+{fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') -> REVERT
+
+
+------------------------- Test case 40 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026264,0) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 41 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 42 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026343,0) -> STOP
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+
+------------------------- Test case 43 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+{fallback}(b'/\x8a4\xe3////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////') -> REVERT
+
+
+------------------------- Test case 44 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(407830882054167870682756228218185264505487026343,0) -> STOP
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 45 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 46 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+{fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') -> REVERT
+
+
+------------------------- Test case 47 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+balances(223523779827079269842916503827196226535613212455) -> REVERT
+
+
+------------------------- Test case 48 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 49 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> REVERT
+
+
+------------------------- Test case 50 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+{fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') -> REVERT
+
+
+------------------------- Test case 51 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+minter() -> REVERT
+
+
+------------------------- Test case 52 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+minter() -> RETURN
+return: 295743552340953831580129088838660291174821306853
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+
+------------------------- Test case 53 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+{fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') -> REVERT
+
+
+------------------------- Test case 54 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+
+------------------------- Test case 55 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+balances(407830882054167870682756228218185264505487026264) -> RETURN
+return: 0
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+
+------------------------- Test case 56 -------------------------
+
+Constructor() with initial balance 0 -> RETURN 
+
+mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) -> REVERT
+
+

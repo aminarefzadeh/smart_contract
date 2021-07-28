@@ -134,7 +134,7 @@ class Analyzer:
     @staticmethod
     def get_mutants_in_batch(all_mutants):
         mutants_num = len(all_mutants)
-        number_of_batch = min(int(mutants_num/10), 10)
+        number_of_batch = min(int(mutants_num/10) + 1, 10)
         mutants_batch = [[] for _ in range(number_of_batch)]
         for i in range(mutants_num):
             mutants_batch[i%number_of_batch].append(all_mutants[i])
