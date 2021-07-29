@@ -1,6 +1,7 @@
 from io import StringIO
 import binascii
 
+from manticore.core.smtlib import issymbolic
 from manticore.ethereum import ABI
 
 from utils import get_argument_from_create_transaction
@@ -152,15 +153,18 @@ class BlockChainState:
             print_diff(contract_account, mutant_account, stream) --> print human readable difference between two blockchain state
     """
 
-    def __init__(self, transaction_state):
+    def __init__(self, transaction_state, log_state):
         self.accounts = {}
         self.transaction_state = transaction_state
+        self.log_state = log_state
 
     def add_account(self, account):
         self.accounts[account.address] = account
 
     def __eq__(self, other):
-        return self.accounts == other.accounts and self.transaction_state == other.transaction_state
+        return self.accounts == other.accounts and \
+               self.transaction_state == other.transaction_state and \
+               self.log_state == other.log_state
 
     def __str__(self):
         output = 'Path:\n\n'
@@ -192,7 +196,7 @@ class BlockChainState:
         from manticore.core.smtlib import SelectedSolver
         if len(list(mevm.all_states)) == 0:
             empty_transaction_state = TransactionState(result=[], all_tx_summary='')
-            return BlockChainState(empty_transaction_state)
+            return BlockChainState(empty_transaction_state, None)
 
         state = list(mevm.all_states)[0]
         if not mevm.fix_unsound_symbolication(state):
@@ -201,7 +205,10 @@ class BlockChainState:
         transactions = list(state.platform.transactions)
         transaction_state = TransactionState.create(transactions, state, mevm)
         blockchain = state.platform
-        blockchain_state = BlockChainState(transaction_state)
+        blockchain_state = BlockChainState(
+            transaction_state,
+            BlockChainState.get_log(state, blockchain)
+        )
 
         assert state.can_be_true(True)
         for account_address in blockchain.accounts:
@@ -240,6 +247,21 @@ class BlockChainState:
         return blockchain_state
 
     @staticmethod
+    def get_log(state, blockchain):
+        is_something_symbolic = False
+        log_state = []
+        for log_item in blockchain.logs:
+            is_log_symbolic = issymbolic(log_item.memlog)
+            is_something_symbolic = is_log_symbolic or is_something_symbolic
+            solved_memlog = state.solve_one(log_item.memlog)
+
+            topics = []
+            for i, topic in enumerate(log_item.topics):
+                topics.append((i, state.solve_one(topic)))
+            log_state.append((log_item.address, binascii.hexlify(solved_memlog).decode(), topics))
+        return log_state
+
+    @staticmethod
     def print_accounts_diff(contract_accounts, mutant_accounts, stream):
         for address in contract_accounts:
             if contract_accounts[address] != mutant_accounts[address]:
@@ -250,7 +272,7 @@ class BlockChainState:
 def make_transaction_human_readable(conc_tx, mevm, state, stream):
     metadata = mevm.get_metadata(conc_tx.address)
     if conc_tx.sort == "CREATE":
-        stream.write("Constructor(")
+        stream.write("owner: Constructor(")
         if metadata is not None:
             conc_args_data = conc_tx.data[len(metadata._init_bytecode):]
             arguments = ABI.deserialize(metadata.get_constructor_arguments(), conc_args_data)
@@ -278,9 +300,12 @@ def make_transaction_human_readable(conc_tx, mevm, state, stream):
                 return_data = conc_tx.return_data
                 return_values = ABI.deserialize(ret_types, return_data)  # function return
 
-            stream.write("%s(" % function_name)
+            stream.write("%s: %s(" % (mevm.account_name(conc_tx.caller), function_name))
             stream.write(",".join(map(repr, arguments)))
-            stream.write(") -> %s\n" % (conc_tx.result))
+            if conc_tx.value != 0:
+                stream.write(") with %d wei -> %s\n" % (conc_tx.value, conc_tx.result))
+            else:
+                stream.write(") -> %s\n" % (conc_tx.result))
 
             if return_data is not None:
                 if len(return_values) == 1:

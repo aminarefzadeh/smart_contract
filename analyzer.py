@@ -93,9 +93,13 @@ class Analyzer:
             self._main_evm.fix_unsound_symbolication(test_case)
             human_transactions = list(blockchain.human_transactions)
             for sym_tx in human_transactions:
-                conc_tx = sym_tx.concretize(test_case)
+                try:
+                    conc_tx = sym_tx.concretize(test_case)
+                except:
+                    break
                 conc_txs.append(conc_tx)
-            self._conc_testcases.append(conc_txs)
+            if conc_txs:
+                self._conc_testcases.append(conc_txs)
 
     def _find_mutants(self):
         self._all_mutants = sorted(os.listdir(self._args.argv[1]))
@@ -180,16 +184,17 @@ class Analyzer:
                 self._run_test_cases_on_mutants()
 
             self._print_result()
+
+            global manticore_run_time, project_run_time
+            print('manticore run time: ' + str(manticore_run_time))
+            print('project run time: ' + str(project_run_time))
+
             if not self._args.no_testcases:
                 self._main_evm.finalize(only_alive_states=self._args.only_alive_testcases)
             else:
                 self._main_evm.kill()
             for plugin in list(self._main_evm.plugins):
                 self._main_evm.unregister_plugin(plugin)
-
-            global manticore_run_time, project_run_time
-            print('manticore run time: ' + str(manticore_run_time))
-            print('project run time: ' + str(project_run_time))
         finally:
             clean_dir()
 

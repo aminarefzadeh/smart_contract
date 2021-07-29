@@ -1,0 +1,532 @@
+All test cases:
+
+------------------------- Test case 1 -------------------------
+
+* SELECTED
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+* SELECTED
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(22300745198530623141535718272648361505980416,0) -> STOP
+
+attacker: send(0,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+* SELECTED
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(495898297938868706022068214625610854853448676625) -> RETURN
+return: 0
+
+attacker: send(495898297938868706022068214625610854853448676625,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+* SELECTED
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+* SELECTED
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+
+------------------------- Test case 6 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(959894348621210372657383474212874184256952879854,0) -> STOP
+
+attacker: balances(959894348621210372657383474212874184256952879854) -> RETURN
+return: 0
+
+
+------------------------- Test case 7 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(0,0) -> STOP
+
+attacker: send(0,1) -> STOP
+
+
+------------------------- Test case 8 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 9 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 10 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+
+------------------------- Test case 11 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 12 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 13 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+attacker: send(1461501637330902918203684832716283019655932542975,104900915529226885187379285388031094692649411434140716288473825280) -> STOP
+
+
+------------------------- Test case 14 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 15 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 16 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(0,0) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 17 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,5686690025625308901091608159525332184025006080) -> STOP
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+
+------------------------- Test case 18 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(959894348621210372657383474212874184256952879854) -> RETURN
+return: 0
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+
+------------------------- Test case 19 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
+------------------------- Test case 20 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+
+------------------------- Test case 21 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+
+------------------------- Test case 22 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+
+------------------------- Test case 23 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+
+------------------------- Test case 24 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+
+------------------------- Test case 25 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+
+------------------------- Test case 26 -------------------------
+
+owner: Constructor() with initial balance 1610612736 -> REVERT 
+
+
+------------------------- Test case 27 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() with 1433923584 wei -> REVERT
+
+
+------------------------- Test case 28 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 1433923584 wei -> REVERT
+
+
+------------------------- Test case 29 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: {fallback}(b'\x0f<`r<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<') -> REVERT
+
+
+------------------------- Test case 30 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 2147483648 wei -> REVERT
+
+
+------------------------- Test case 31 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 1433923584 wei -> REVERT
+
+
+------------------------- Test case 32 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: minter() with 8657567808 wei -> REVERT
+
+
+------------------------- Test case 33 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: minter() with 7921737841 wei -> REVERT
+
+
+------------------------- Test case 34 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 9999286272 wei -> REVERT
+
+
+------------------------- Test case 35 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: minter() with 8926005251 wei -> REVERT
+
+
+------------------------- Test case 36 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 9462732048 wei -> REVERT
+
+
+------------------------- Test case 37 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663342,0) -> STOP
+
+attacker: minter() with 8589934592 wei -> REVERT
+
+
+------------------------- Test case 38 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 7921737841 wei -> REVERT
+
+
+------------------------- Test case 39 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: {fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') with 9932638307 wei -> REVERT
+
+
+------------------------- Test case 40 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 8992587776 wei -> REVERT
+
+
+------------------------- Test case 41 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: minter() with 8674607104 wei -> REVERT
+
+
+------------------------- Test case 42 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663342,0) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 1543517248 wei -> REVERT
+
+
+------------------------- Test case 43 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: {fallback}(b'\x0f<`r\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f\x0f') with 8926005251 wei -> REVERT
+
+
+------------------------- Test case 44 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 8926005251 wei -> REVERT
+
+
+------------------------- Test case 45 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 9575596032 wei -> REVERT
+
+
+------------------------- Test case 46 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: {fallback}(b'/\x8a4\xe3////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////') -> REVERT
+
+
+------------------------- Test case 47 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 8674607104 wei -> REVERT
+
+
+------------------------- Test case 48 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: {fallback}(b'/\x8a4\xe3////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////') -> REVERT
+
+
+------------------------- Test case 49 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 3525181440 wei -> REVERT
+
+
+------------------------- Test case 50 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 8926005251 wei -> REVERT
+
+
+------------------------- Test case 51 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+attacker: {fallback}(b'/\x8a4\xe3////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////') with 9999446460 wei -> REVERT
+
+
+------------------------- Test case 52 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+attacker: balances(223523779827079269842916503827196226535613212455) with 1704460288 wei -> REVERT
+
+
+------------------------- Test case 53 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 9575596032 wei -> REVERT
+
+
+------------------------- Test case 54 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) with 8674607104 wei -> REVERT
+
+
+------------------------- Test case 55 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(501607288709692545546301358503408835398979663121) -> RETURN
+return: 0
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 7921737841 wei -> REVERT
+
+
+------------------------- Test case 56 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(501607288709692545546301358503408835398979663342,0) -> STOP
+
+attacker: send(1192126825744422772495554687078379874856603799760,94450017887693210384716725026694450327373163962561714981204617543709533196496) with 8589934592 wei -> REVERT
+
+

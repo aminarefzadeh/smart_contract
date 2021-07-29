@@ -1,0 +1,20 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract 240c1887d1f742c5ef657b7a087c02c87678af57 offset c9
+    1  .21;
+        2  
+        3  contra
+
+3 accounts.
+* owner::
+Address: 0xbfc48b7c85f0aff536333c6b8ad46767af7d3bcd 
+Balance: 9999903389 (*)
+Storage: STORAGE_bfc48b7c85f0aff536333c6b8ad46767af7d3bcd
+
+* attacker::
+Address: 0xc091a96383512accad50375514dff8ff7f85948a 
+Balance: 9999954088 (*)
+Storage: STORAGE_c091a96383512accad50375514dff8ff7f85948a
+
+* contract0::
+Address: 0x240c1887d1f742c5ef657b7a087c02c87678af57 

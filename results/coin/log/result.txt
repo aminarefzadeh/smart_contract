@@ -1,0 +1,76 @@
+Not killed mutants:
+
+contract.mutant.13.sol
+contract.mutant.12.sol
+contract.mutant.21.sol
+contract.mutant.20.sol
+contract.mutant.18.sol
+contract.mutant.22.sol
+contract.mutant.23.sol
+contract.mutant.2.sol
+contract.mutant.24.sol
+contract.mutant.33.sol
+contract.mutant.25.sol
+contract.mutant.40.sol
+contract.mutant.48.sol
+contract.mutant.26.sol
+contract.mutant.44.sol
+contract.mutant.59.sol
+contract.mutant.43.sol
+contract.mutant.54.sol
+contract.mutant.32.sol
+contract.mutant.50.sol
+contract.mutant.9.sol
+contract.mutant.39.sol
+contract.mutant.45.sol
+contract.mutant.51.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: minter() -> RETURN
+return: 1151600491545550645678669644818285861863396464267
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(22300745198530623141535718272648361505980416,0) -> STOP
+
+attacker: send(0,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: balances(495898297938868706022068214625610854853448676625) -> RETURN
+return: 0
+
+attacker: send(495898297938868706022068214625610854853448676625,0) -> STOP
+
+
+------------------------- Test case 4 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: send(1461501637330902918203684832716283019655932542975,6252581806732826542102055870773261469164455618509096878080) -> STOP
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+
+------------------------- Test case 5 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+attacker: send(501607288709692545546301358503408835398979663121,0) -> STOP
+
+

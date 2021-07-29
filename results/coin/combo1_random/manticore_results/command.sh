@@ -1,0 +1,1 @@
+script.py input/contract.sol input/mutants --workspace manticore_results --txaccount combo1 --policy random

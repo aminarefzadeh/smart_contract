@@ -1,0 +1,7 @@
+cli:
+  argv:
+  - input/contract.sol
+  - input/mutants
+  policy: random
+  txaccount: combo1
+  workspace: manticore_results

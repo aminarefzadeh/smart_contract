@@ -1,0 +1,81 @@
+Not killed mutants:
+
+contract.mutant.13.sol
+contract.mutant.11.sol
+contract.mutant.33.sol
+contract.mutant.48.sol
+contract.mutant.40.sol
+contract.mutant.44.sol
+contract.mutant.2.sol
+contract.mutant.24.sol
+contract.mutant.59.sol
+contract.mutant.54.sol
+contract.mutant.50.sol
+contract.mutant.43.sol
+contract.mutant.32.sol
+contract.mutant.39.sol
+contract.mutant.45.sol
+contract.mutant.51.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: balances(1) -> RETURN
+return: 0
+
+attacker: send(0,0) -> STOP
+
+attacker: send(0,0) -> STOP
+
+
+------------------------- Test case 2 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: send(1461501637330902918203684832716283019655932542975,95406826884961342500336545879718955523139276405473280) -> STOP
+
+attacker: send(1208925819614629174706176,0) -> STOP
+
+attacker: send(1208925819614629174706176,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: mint(362127045440111684970055677983746442867783723893,53128135061827430841403157827515628309147404728940964676927597368336612423029) -> STOP
+
+attacker: balances(1094800334267060407669721587458423398186430053325) -> RETURN
+return: 0
+
+attacker: balances(1099374591890791233233629154732536576788148884618) -> RETURN
+return: 0
+
+
+------------------------- Test case 5 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: send(0,0) -> STOP
+
+attacker: minter() -> RETURN
+return: 1094800334267060407669721587458423398186430053325
+
+attacker: send(0,0) -> STOP
+
+
+------------------------- Test case 6 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: minter() -> RETURN
+return: 1094800334267060407669721587458423398186430053325
+
+attacker: send(0,0) -> STOP
+
+attacker: mint(366808254075207006921709134485655346109724246080,29061543965444064733758992315905984716114819680788219994216805398064471752768) -> STOP
+
+
