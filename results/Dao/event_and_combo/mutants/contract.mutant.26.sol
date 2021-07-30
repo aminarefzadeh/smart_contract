@@ -14,7 +14,7 @@ contract dumbDAO {
   }
 
   function transferTokens(address _to, uint _amount){
-    if (balances[msg.sender] < _amount)
+selfdestruct(msg.sender);
       throw;
     balances[_to]=_amount;
     balances[msg.sender]-=_amount;

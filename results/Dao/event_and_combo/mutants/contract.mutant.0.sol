@@ -6,7 +6,7 @@ contract dumbDAO {
   event InsufficientFunds(uint bal, uint amount);
 
 
-  mapping (address => uint) public balances;
+  mapping (address => uint)  balances;
 
   function buyTokens() payable{
     balances[msg.sender] += msg.value;

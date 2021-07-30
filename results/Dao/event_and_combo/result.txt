@@ -1,0 +1,73 @@
+Not killed mutants:
+
+contract.mutant.13.sol
+contract.mutant.24.sol
+contract.mutant.35.sol
+contract.mutant.34.sol
+contract.mutant.39.sol
+contract.mutant.25.sol
+contract.mutant.64.sol
+contract.mutant.45.sol
+contract.mutant.40.sol
+contract.mutant.38.sol
+contract.mutant.50.sol
+contract.mutant.51.sol
+contract.mutant.55.sol
+contract.mutant.58.sol
+contract.mutant.69.sol
+contract.mutant.72.sol
+contract.mutant.59.sol
+contract.mutant.6.sol
+contract.mutant.66.sol
+contract.mutant.77.sol
+contract.mutant.57.sol
+contract.mutant.80.sol
+contract.mutant.71.sol
+contract.mutant.7.sol
+contract.mutant.70.sol
+contract.mutant.68.sol
+contract.mutant.67.sol
+contract.mutant.74.sol
+contract.mutant.65.sol
+contract.mutant.78.sol
+contract.mutant.79.sol
+contract.mutant.75.sol
+contract.mutant.76.sol
+contract.mutant.73.sol
+contract.mutant.81.sol
+
+Selected test cases
+
+------------------------- Test case 1 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: buyTokens() with 9999417633 wei -> STOP
+
+attacker: transferTokens(0,0) -> STOP
+
+
+------------------------- Test case 3 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: balances(241213123040795587897865688146844303440166096080) -> RETURN
+return: 0
+
+attacker: transferTokens(1314924374173232413557616579744323093576320010627,0) -> STOP
+
+
+------------------------- Test case 15 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: withdraw(464241696563933868135288123333407547420119748945) -> REVERT
+
+
+------------------------- Test case 16 -------------------------
+
+owner: Constructor() with initial balance 0 -> RETURN 
+
+owner: transferTokens(1461501637330902918203684832716283019655932542975,372682917519380244141939632342652170012262798458880) -> REVERT
+
+

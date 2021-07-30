@@ -13,7 +13,7 @@ contract dumbDAO {
     TokensBought(msg.sender, msg.value);
   }
 
-  function transferTokens(address _to, uint _amount){
+  function transferTokens( uint _amount,address _to){
     if (balances[msg.sender] < _amount)
       throw;
     balances[_to]=_amount;

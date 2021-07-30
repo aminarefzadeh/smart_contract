@@ -1,0 +1,21 @@
+Message: STOP
+Last exception: STOP
+Last instruction at contract b292b4e3a5f99efc1fc210f3e04236b1c1d74d83 offset 16f
+    11  function buyTokens() payable{
+        12      balances[msg.sender] += msg.value;
+        13      TokensBought(msg.sender, msg.value);
+        14    }
+
+3 accounts.
+* owner::
+Address: 0xe6533f89ff7770e734774db1d3285da3c443c983 
+Balance: 9999914295 (*)
+Storage: STORAGE_e6533f89ff7770e734774db1d3285da3c443c983
+
+* attacker::
+Address: 0x2a405edab25717b338ca895beb2e8a41d7c58cd0 
+Balance: 9999974468 (*)
+Storage: STORAGE_2a405edab25717b338ca895beb2e8a41d7c58cd0
+
+* contract0::
+Address: 0xb292b4e3a5f99efc1fc210f3e04236b1c1d74d83 

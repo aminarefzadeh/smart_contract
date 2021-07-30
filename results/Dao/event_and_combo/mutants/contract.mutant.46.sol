@@ -18,7 +18,7 @@ contract dumbDAO {
       throw;
     balances[_to]=_amount;
     balances[msg.sender]-=_amount;
-    TokensTransfered(msg.sender, _to, _amount);
+selfdestruct(msg.sender);
   }
 
   function withdraw(address _recipient) returns (bool) {

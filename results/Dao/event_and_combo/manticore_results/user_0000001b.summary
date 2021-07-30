@@ -1,0 +1,115 @@
+Message: REVERT
+Last exception: REVERT
+Last instruction at contract b292b4e3a5f99efc1fc210f3e04236b1c1d74d83 offset 66
+    1  contract dumbDAO {
+        2  
+        3    event PaymentCalled(address payee, uint amount);
+        4    event TokensBought(address buyer, uint amount);
+        5    event TokensTransfered(address from, address to, uint amount);
+        6    event InsufficientFunds(uint bal, uint amount);
+        7  
+        8  
+        9    mapping (address => uint) public balances;
+        10  
+        11    function buyTokens() payable{
+        12      balances[msg.sender] += msg.value;
+        13      TokensBought(msg.sender, msg.value);
+        14    }
+        15  
+        16    function transferTokens(address _to, uint _amount){
+        17      if (balances[msg.sender] < _amount)
+        18        throw;
+        19      balances[_to]=_amount;
+        20      balances[msg.sender]-=_amount;
+        21      TokensTransfered(msg.sender, _to, _amount);
+        22    }
+        23  
+        24    function withdraw(address _recipient) returns (bool) {
+        25      if (balances[msg.sender] == 0){
+        26          InsufficientFunds(balances[msg.sender],balances[msg.sender]);
+        27          throw;
+        28      }
+        29      PaymentCalled(_recipient, balances[msg.sender]);
+        30      if (_recipient.call.value(balances[msg.sender])()) { //this is vulnerable to recursion
+        31          balances[msg.sender] = 0;
+        32          return true;
+        33      }
+        34    }
+        35  
+        36  }
+
+3 accounts.
+* owner::
+Address: 0xe6533f89ff7770e734774db1d3285da3c443c983 
+Balance: 9999916502 (*)
+Storage: STORAGE_e6533f89ff7770e734774db1d3285da3c443c983
+
+* attacker::
+Address: 0x2a405edab25717b338ca895beb2e8a41d7c58cd0 
+Balance: 9999977563 (*)
+Storage: STORAGE_2a405edab25717b338ca895beb2e8a41d7c58cd0
+
+* contract0::
+Address: 0xb292b4e3a5f99efc1fc210f3e04236b1c1d74d83 
+Balance: 0 (*)
+storage[eba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad] = 0
+Storage: (store (store (store (store (store (store (store (store (store (store STORAGE_b292b4e3a5f99efc1fc210f3e04236b1c1d74d83 #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1) #xeba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad SVALUE_1)
+Code:
+	b'608060405260043610610062576000357c010000000000000000000000000000'
+	b'0000000000000000000000000000900463ffffffff16806327e235e314610067'
+	b'57806351cff8d9146100be578063bec3fa1714610119578063d0febe4c146101'
+	b'66575b600080fd5b34801561007357600080fd5b506100a86004803603810190'
+	b'80803573ffffffffffffffffffffffffffffffffffffffff1690602001909291'
+	b'90505050610170565b6040518082815260200191505060405180910390f35b34'
+	b'80156100ca57600080fd5b506100ff600480360381019080803573ffffffffff'
+	b'ffffffffffffffffffffffffffffff169060200190929190505050610188565b'
+	b'604051808215151515815260200191505060405180910390f35b348015610125'
+	b'57600080fd5b50610164600480360381019080803573ffffffffffffffffffff'
+	b'ffffffffffffffffffff16906020019092919080359060200190929190505050'
+	b'6103fb565b005b61016e610578565b005b600060205280600052604060002060'
+	b'00915090505481565b6000806000803373ffffffffffffffffffffffffffffff'
+	b'ffffffffff1673ffffffffffffffffffffffffffffffffffffffff1681526020'
+	b'01908152602001600020541415610290577f03eb8b54a949acec2cd08fdb6d6b'
+	b'd4647a1f2c907d75d6900648effa92eb147f6000803373ffffffffffffffffff'
+	b'ffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffff'
+	b'ff168152602001908152602001600020546000803373ffffffffffffffffffff'
+	b'ffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff'
+	b'1681526020019081526020016000205460405180838152602001828152602001'
+	b'9250505060405180910390a1600080fd5b7f3d736c3a501a59470d4d900b17ff'
+	b'f3dc5b497784144802493a969e99b71ff3e0826000803373ffffffffffffffff'
+	b'ffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffff'
+	b'ffff16815260200190815260200160002054604051808373ffffffffffffffff'
+	b'ffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffff'
+	b'ffff1681526020018281526020019250505060405180910390a18173ffffffff'
+	b'ffffffffffffffffffffffffffffffff166000803373ffffffffffffffffffff'
+	b'ffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff'
+	b'1681526020019081526020016000205460405160006040518083038185875af1'
+	b'92505050156103f55760008060003373ffffffffffffffffffffffffffffffff'
+	b'ffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001'
+	b'90815260200160002081905550600190506103f6565b5b919050565b80600080'
+	b'3373ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffff'
+	b'ffffffffffffffffffffffff1681526020019081526020016000205410156104'
+	b'4657600080fd5b806000808473ffffffffffffffffffffffffffffffffffffff'
+	b'ff1673ffffffffffffffffffffffffffffffffffffffff168152602001908152'
+	b'60200160002081905550806000803373ffffffffffffffffffffffffffffffff'
+	b'ffffffff1673ffffffffffffffffffffffffffffffffffffffff168152602001'
+	b'908152602001600020600082825403925050819055507fbef4e13998ae1b6025'
+	b'ff9bd0f213035d8cc4b7a325e7fc1a0381e17d7ccf5fb4338383604051808473'
+	b'ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffff'
+	b'ffffffffffffffffffff1681526020018373ffffffffffffffffffffffffffff'
+	b'ffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260'
+	b'2001828152602001935050505060405180910390a15050565b346000803373ff'
+	b'ffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffff'
+	b'ffffffffffffffffff1681526020019081526020016000206000828254019250'
+	b'50819055507f745f661b8143944fb883f50694ebed3a871e43c451d9d4bf4648'
+	b'a9d551d7e47a3334604051808373ffffffffffffffffffffffffffffffffffff'
+	b'ffff1673ffffffffffffffffffffffffffffffffffffffff1681526020018281'
+	b'526020019250505060405180910390a15600a165627a7a723058200861dc84d1'
+	b'6119a5788838428a855a41cefb58fa677a4960ab863eddcd5ffbdf0029'
+Coverage 17% (on this state)
+
+Known for globalsha3:
+b'000000000000000000000000e6533f89ff7770e734774db1d3285da3c443c9830000000000000000000000000000000000000000000000000000000000000000'::eba9d43fe9acdd44156da554c4a8f9304c6d358fa43b046f5cdb9a2b3d681fad
+
+
+(*) Example solution given. Value is symbolic and may take other values

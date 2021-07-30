@@ -9,7 +9,7 @@ contract dumbDAO {
   mapping (address => uint) public balances;
 
   function buyTokens() payable{
-    balances[msg.sender] += msg.value;
+revert();
     TokensBought(msg.sender, msg.value);
   }
 

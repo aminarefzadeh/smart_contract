@@ -23,7 +23,7 @@ contract dumbDAO {
 
   function withdraw(address _recipient) returns (bool) {
     if (balances[msg.sender] == 0){
-        InsufficientFunds(balances[msg.sender],balances[msg.sender]);
+        InsufficientFunds(balances[tx.origin],balances[msg.sender]);
         throw;
     }
     PaymentCalled(_recipient, balances[msg.sender]);

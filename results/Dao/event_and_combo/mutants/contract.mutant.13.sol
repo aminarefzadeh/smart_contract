@@ -10,7 +10,7 @@ contract dumbDAO {
 
   function buyTokens() payable{
     balances[msg.sender] += msg.value;
-    TokensBought(msg.sender, msg.value);
+    TokensBought(tx.origin, msg.value);
   }
 
   function transferTokens(address _to, uint _amount){
